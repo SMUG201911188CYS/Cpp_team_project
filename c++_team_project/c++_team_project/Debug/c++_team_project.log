@@ -1,0 +1,14 @@
+﻿  Event.cpp
+C:\Users\money\source\repos\c++_team_project\c++_team_project\Event.cpp(14,13): warning C4244: 'return': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\money\source\repos\c++_team_project\c++_team_project\Event.cpp(241,21): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+C:\Users\money\source\repos\c++_team_project\c++_team_project\Event.cpp(247,21): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+C:\Users\money\source\repos\c++_team_project\c++_team_project\Event.cpp(124): warning C4715: 'Event::box': 모든 제어 경로에서 값을 반환하지는 않습니다.
+C:\Users\money\source\repos\c++_team_project\c++_team_project\Event.cpp(62): warning C4715: 'Event::pot': 모든 제어 경로에서 값을 반환하지는 않습니다.
+C:\Users\money\source\repos\c++_team_project\c++_team_project\Event.cpp(299): warning C4715: 'Event::circle': 모든 제어 경로에서 값을 반환하지는 않습니다.
+C:\Users\money\source\repos\c++_team_project\c++_team_project\Event.cpp(413): warning C4715: 'Event::paper': 모든 제어 경로에서 값을 반환하지는 않습니다.
+C:\Users\money\source\repos\c++_team_project\c++_team_project\Event.cpp(257): warning C4715: 'Event::mouse': 모든 제어 경로에서 값을 반환하지는 않습니다.
+C:\Users\money\source\repos\c++_team_project\c++_team_project\Event.cpp(369): warning C4715: 'Event::button': 모든 제어 경로에서 값을 반환하지는 않습니다.
+C:\Users\money\source\repos\c++_team_project\c++_team_project\Event.cpp(635): warning C4715: 'Event::pipe': 모든 제어 경로에서 값을 반환하지는 않습니다.
+C:\Users\money\source\repos\c++_team_project\c++_team_project\Event.cpp(700): warning C4715: 'Event::lake': 모든 제어 경로에서 값을 반환하지는 않습니다.
+C:\Users\money\source\repos\c++_team_project\c++_team_project\Event.cpp(568): warning C4715: 'Event::npc': 모든 제어 경로에서 값을 반환하지는 않습니다.
+  c++_team_project.vcxproj -> C:\Users\money\source\repos\c++_team_project\Debug\c++_team_project.exe
