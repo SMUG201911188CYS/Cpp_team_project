@@ -9,7 +9,7 @@ class Event {
 private:
 	int rand_value;
 	Control control;
-	enum keboard {
+	enum keboard { // 키보드 상하좌우 enum
 		UP,
 		DOWN,
 		LEFT,
@@ -17,7 +17,7 @@ private:
 		SUBMIT
 	};
 
-	enum Event_percent {
+	enum Event_percent { // 아이템 이름
 		CHEWING_GUM,
 		COTTON,
 		NONE,
@@ -40,7 +40,7 @@ private:
 		GET_BarbieArms,
 		GET_ICArms,
 	};
-	int pot_item_percent[10] = { 0,0,0,0,1,1,1,1,2,2 };
+	int pot_item_percent[10] = { 0,0,0,0,1,1,1,1,2,2 }; // 각 이벤트 확률
 	int box_item_percent[10] = { 0,0,1,1,2,2,3,3,3,4 };
 	int circle_item_percent[10] = { 2, 2, 2, 2, 5, 5, 5, 5, 5, 5 };
 	int paper_item_percent[10] = { 2, 2, 2, 2, 6, 6, 6, 6, 6, 6 };
@@ -60,7 +60,6 @@ public:
 	int paper();
 	int button();
 	int mouse();
-	int book();
 	int npc(int sewer_in);
 	int pipe(int sewer_in);
 	int lake(int sewer_in);

@@ -6,7 +6,7 @@ Bag::Bag() {
 
 }
 
-void Bag::bag_list() {
+/*void Bag::bag_list() {
 	gotoxy(65, 47);
 	printf("                               ");
 	gotoxy(65, 48);
@@ -28,4 +28,4 @@ void Bag::bag_list() {
 	printf("   %s", haveitem[1]);
 	gotoxy(x, y + 2);
 	printf("   %s", haveitem[2]);
-}
+}*/

@@ -7,12 +7,9 @@ private:
 	int x;
 	int y;
 	Control control;
-	int intro_in; // 게임시작 or 게임종료 선택
 	int sewer_in; // 처음 하수구 선택 1 -> C 2 -> G417, 3 -> NORMAL
-	int first_crossroad_in;
-	int second_crossroad_in;
-	int third_crossroad_in;
-	enum choice {
+	int cross_in[3];
+	enum choice { // 키 입력 enum
 		UP,
 		DOWN,
 		LEFT,
@@ -24,7 +21,7 @@ private:
 		M = 51,
 		R = 52
 	};
-	enum object {
+	enum object { // 방 내부 오브젝트 목록들 enum
 		pot,
 		box,
 		hole,
@@ -70,6 +67,8 @@ public:
 	int n_room3_1();
 	int n_room3_2();
 	int n_room3_3();
+	int Get_Sewer_in();
+	int Get_Crossroad_In(int index);
 };
 
 #endif // !__ROOM_H__

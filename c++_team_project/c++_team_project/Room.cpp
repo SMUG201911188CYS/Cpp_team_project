@@ -4,9 +4,9 @@
 
 Room::Room() {
 	this->sewer_in = 0;
-	this->first_crossroad_in = 0;
-	this->second_crossroad_in = 0;
-	this->third_crossroad_in = 0;
+	this->cross_in[0] = 0;
+	this->cross_in[1] = 0;
+	this->cross_in[2] = 0;
 	this->x = 36;
 	this->y = 24;
 }
@@ -48,8 +48,8 @@ bool Room::intro() {
 		}
 		case SUBMIT:
 		{
-			intro_in = y;
-			return true;
+			if (y == START) return true;
+			else return false;
 		}
 		}
 	}
@@ -133,38 +133,38 @@ bool Room::crossroad() {
 		}
 		case SUBMIT: {
 			if (y == L) { // 여기서 값을 넣어주고 그 값을 main함수로 보내주고 그 값에 따라 main함수에서 방으로 이동시켜야 함.
-				if (first_crossroad_in == 0) {
-					first_crossroad_in = 1;
+				if (cross_in[0] == 0) {
+					cross_in[0] = 1;
 				}
-				else if (second_crossroad_in == 0) {
-					second_crossroad_in = 1;
+				else if (cross_in[1] == 0) {
+					cross_in[1] = 1;
 				}
-				else if (third_crossroad_in == 0) {
-					third_crossroad_in = 1;
+				else if (cross_in[2] == 0) {
+					cross_in[2] = 1;
 				}
 				return true;
 			}
 			else if (y == M) {
-				if (first_crossroad_in == 0) {
-					first_crossroad_in = 2;
+				if (cross_in[0] == 0) {
+					cross_in[0] = 2;
 				}
-				else if (second_crossroad_in == 0) {
-					second_crossroad_in = 2;
+				else if (cross_in[1] == 0) {
+					cross_in[1] = 2;
 				}
-				else if (third_crossroad_in == 0) {
-					third_crossroad_in = 2;
+				else if (cross_in[2] == 0) {
+					cross_in[2] = 2;
 				}
 				return true;
 			}
 			else if (y == R) {
-				if (first_crossroad_in == 0) {
-					first_crossroad_in = 3;
+				if (cross_in[0] == 0) {
+					cross_in[0] = 3;
 				}
-				else if (second_crossroad_in == 0) {
-					second_crossroad_in = 3;
+				else if (cross_in[1] == 0) {
+					cross_in[1] = 3;
 				}
-				else if (third_crossroad_in == 0) {
-					third_crossroad_in = 3;
+				else if (cross_in[2] == 0) {
+					cross_in[2] = 3;
 				}
 				return true;
 			}
@@ -1971,4 +1971,12 @@ int Room::g_room3_3() {
 			std::cout << "항아리에서는 껌, 솜뭉치, 꽝을 얻을 수 있습니다.";
 		}
 	}
+}
+
+int Room::Get_Crossroad_In(int index) {
+	return cross_in[index];
+}
+
+int Room::Get_Sewer_in() {
+	return sewer_in;
 }

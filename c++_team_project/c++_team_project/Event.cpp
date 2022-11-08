@@ -328,7 +328,7 @@ int Event::button() {
 		control.gotoxy(65, 25);
 		std::cout << "눌러봐도 아무 일도 없었다.";
 	}
-	else if (button_tiem_percent[rand_value] = GET_DEADHARD)
+	else if (button_tiem_percent[rand_value] == GET_DEADHARD)
 	{
 		system("cls");
 		control.gotoxy(2, 2);
