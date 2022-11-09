@@ -140,7 +140,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Bag.cpp" />
-    <ClCompile Include="Battle.cpp" />
     <ClCompile Include="c++_team_project.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="Control.cpp" />
@@ -153,9 +152,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bag.h" />
-    <ClInclude Include="Battle.h" />
     <ClInclude Include="Control.h" />
     <ClInclude Include="Ending.h" />
+    <ClInclude Include="enum.h" />
     <ClInclude Include="Event.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="Game.h" />

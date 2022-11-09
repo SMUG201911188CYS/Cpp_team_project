@@ -1,6 +1,4 @@
-#include <iostream>
-#include "Room.h"
-#include <Windows.h>
+#include "enum.h"
 
 Room::Room() {
 	this->sewer_in = 0;

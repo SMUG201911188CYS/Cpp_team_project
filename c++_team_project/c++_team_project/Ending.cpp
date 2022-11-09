@@ -1,7 +1,4 @@
-#include <iostream>
-#include <Windows.h>
-#include <conio.h>
-#include "Ending.h"
+#include "enum.h"
 
 using std::cout;
 using std::endl;

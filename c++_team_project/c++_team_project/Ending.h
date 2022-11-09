@@ -1,7 +1,7 @@
 #ifndef __Ending_h__
 #define __Ending_h__
 
-#include "Scene.h"
+#include "enum.h"
 
 class Ending : public Scene {
 

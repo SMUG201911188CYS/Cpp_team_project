@@ -2,44 +2,12 @@
 
 
 #define __EVENT_H__
-#include "Control.h"
-#include <random>
+#include "enum.h"
 
 class Event {
 private:
 	int rand_value;
 	Control control;
-	enum keboard { // 키보드 상하좌우 enum
-		UP,
-		DOWN,
-		LEFT,
-		RIGHT,
-		SUBMIT
-	};
-
-	enum Event_percent { // 아이템 이름
-		CHEWING_GUM,
-		COTTON,
-		NONE,
-		INSSA_RABBIT,
-		INF_GAUNTLETS,
-		MAGIC_CIRCLE,
-		F_GRADE_CARD,
-		GET_DEADHARD,
-		GET_CHEESE,
-		MATH,
-		TAGD,
-		GET_FARMING,
-		MEET_IC,
-		MEET_HOMELESS,
-		GET_LISTEN,
-		GET_DoriArms,
-		GET_Wings,
-		GET_Twigs,
-		GET_CatArms,
-		GET_BarbieArms,
-		GET_ICArms,
-	};
 	int pot_item_percent[10] = { 0,0,0,0,1,1,1,1,2,2 }; // 각 이벤트 확률
 	int box_item_percent[10] = { 0,0,1,1,2,2,3,3,3,4 };
 	int circle_item_percent[10] = { 2, 2, 2, 2, 5, 5, 5, 5, 5, 5 };

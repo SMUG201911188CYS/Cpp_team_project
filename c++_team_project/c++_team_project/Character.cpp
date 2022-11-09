@@ -1,6 +1,4 @@
-#include "Character.h"
-#include <iostream>
-#include <random>
+#include "enum.h"
 
 Character::Character() {
 	this->hp = 0;

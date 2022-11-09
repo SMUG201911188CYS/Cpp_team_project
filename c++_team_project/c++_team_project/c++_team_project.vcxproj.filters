@@ -42,42 +42,39 @@
     <ClCompile Include="Bag.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Battle.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Game.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Scene.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Control.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Ending.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Room.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Event.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Character.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Item.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Bag.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Battle.h">
+    <ClInclude Include="enum.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Event.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Game.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Room.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

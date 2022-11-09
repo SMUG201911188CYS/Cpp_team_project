@@ -1,7 +1,4 @@
-#include <iostream>
-#include <Windows.h>
-#include <conio.h>
-#include "Control.h"
+#include "enum.h"
 
 Control::Control() {
 	this->x = 0;

@@ -1,18 +1,11 @@
-#ifndef __Control_h__
-#define __Control_h__
+#ifndef __CONTROL_H__
+#define __CONTROL_H__
 
 class Control {
 private:
 	int x;
 	int y;
 public:
-	enum {
-		UP,
-		DOWN,
-		LEFT,
-		RIGHT,
-		SUBMIT
-	};
 	Control();
 	void delete_blink(); // 키보드 깜박이는거 없애기
 	void gotoxy(int x, int y); // 이동하기

@@ -1,6 +1,6 @@
-#ifndef __Scene_h__
-#define __Scene_h__
-#include "Control.h"
+#ifndef __SCENE_H__
+#define __SCENE_H__
+#include "enum.h"
 
 class Scene {
 protected:

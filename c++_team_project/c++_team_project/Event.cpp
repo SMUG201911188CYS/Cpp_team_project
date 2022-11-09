@@ -1,6 +1,4 @@
-#include <iostream>
-#include "Event.h"
-#include <Windows.h>
+#include "enum.h"
 
 Event::Event() {
 	rand_value = 0;

@@ -1,8 +1,9 @@
 #pragma once
-#ifndef __Character_h__
+#ifndef __CHARACTER_H__
 
 #define __CHARACTER_H__
-#include <string>
+#include "enum.h"
+
 class Character {
 private:
 	int hp;
@@ -33,17 +34,6 @@ private :
 	std::string arms; // ÆÈ
 	std::string skill_discription; // ÆÈ ½ºÅ³ ¼³¸í
 	int arms_skill_count;
-	enum Arms {
-		NONE = 0,
-		Dori_Bear_arms = 15,
-		Wings = 16,
-		Twigs = 17,
-		CatArms = 18,
-		BarbieArms = 19,
-		ICArms = 20,
-		Wings_end = 412,
-		Cat_end = 414,
-	};
 public :
 	Player();
 
