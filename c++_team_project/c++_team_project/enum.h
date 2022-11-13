@@ -33,6 +33,7 @@ enum keboard { // 키 입력 enum
 
 enum item_effect_list { // 아이템 효과
 	CHEWING_GUM_SHIELD = 10, // 피 10 회복
+	CHEESE_SHIELD = CHEWING_GUM_SHIELD,
 	COTTON_HEAL = CHEWING_GUM_SHIELD, // 피 10 회복
 	INSSA_RABBIT_DM_DOWN = 2, // 공격력 2 감소
 	MAGIC_CIRCLE_DM = 50, // 50의 데미지 입힘
@@ -44,6 +45,11 @@ enum item_effect_list { // 아이템 효과
 	INF_GAUTTLETS_END2 = 315 // 엔딩
 };
 
+enum passive {
+	DEADHARD = 7,
+	FARMING = 11,
+	LISTEN = 14
+};
 enum item_list { // 아이템 이름
 	CHEWING_GUM,
 	COTTON,
@@ -88,7 +94,6 @@ enum object { // 방 내부 오브젝트 목록들 enum
 	paper,
 	button,
 	mouse,
-	book,
 	npc,
 	pipe,
 	lake

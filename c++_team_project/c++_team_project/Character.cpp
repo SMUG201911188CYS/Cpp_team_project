@@ -26,7 +26,7 @@ int Character::normal_attack(Character& Hit_Object) {
 
 // 도리베어(플레이어) 구현
 
-Player::Player() {
+Player::Player(int hp, int shield, int ad) : Character(hp, shield, ad) {
 	this->arms = "없음";
 	this->skill_discription = "없음";
 	this->arms_skill_count = 0;
@@ -72,12 +72,12 @@ bool Player::Set_Arms(int arms) {
 	else {
 		return false;
 	}
-	
+
 	return true;
 }
 
 int Player::Skill_Attack(Character& Hit_Object) {
-	
+
 	if (this->arms == "Wings") {
 		Hit_Object.Set_HP(Hit_Object.Get_HP() - 25);
 		this->arms_skill_count--;
@@ -100,13 +100,12 @@ int Player::Skill_Attack(Character& Hit_Object) {
 	else {
 		return false;
 	}
+	return false;
 }
 
 // 공주(보스) 구현
 
-Boss::Boss() {
-	Set_HP(200);
-	Set_AttackDamage(0);
+Boss::Boss() : Character(200, 0, 0) {
 	this->last_bossattack = 0;
 	this->boss_skill_list[0] = "손목 때리기";
 	this->boss_skill_list[1] = "육두문자";
@@ -114,10 +113,10 @@ Boss::Boss() {
 	this->boss_skill_list[3] = "술주정";
 }
 
-int Boss::Skill_Attack(Character & Hit_Object) {
+int Boss::Skill_Attack(Character& Hit_Object) {
 	std::random_device rd;
 	std::mt19937 gen(rd());
-	std::normal_distribution<> dist(0, 3);
+	std::uniform_int_distribution<int> dist(0, 3);
 
 	this->last_bossattack = dist(gen);
 
@@ -137,6 +136,7 @@ int Boss::Skill_Attack(Character & Hit_Object) {
 		this->Set_AttackDamage(this->Get_AttackDamage() + 2);
 		return 0;
 	}
+	return 0;
 }
 
 std::string Boss::Get_Last_Attack_Name() {

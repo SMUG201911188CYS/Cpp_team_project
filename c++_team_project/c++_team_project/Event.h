@@ -8,7 +8,7 @@ class Event {
 private:
 	int rand_value;
 	Control control;
-	int pot_item_percent[10] = { 0,0,0,0,1,1,1,1,2,2 }; // 각 이벤트 확률
+	int pot_item_percent[10] = { 0,0,0,0,1,1,1,1,2,2 }; // 각 이벤트 확률 -> item_list과 동일
 	int box_item_percent[10] = { 0,0,1,1,2,2,3,3,3,4 };
 	int circle_item_percent[10] = { 2, 2, 2, 2, 5, 5, 5, 5, 5, 5 };
 	int paper_item_percent[10] = { 2, 2, 2, 2, 6, 6, 6, 6, 6, 6 };

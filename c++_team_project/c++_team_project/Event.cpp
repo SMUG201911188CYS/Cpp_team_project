@@ -7,7 +7,7 @@ Event::Event() {
 int Event::rand() {
 	std::random_device rd;
 	std::mt19937 gen(rd());
-	std::normal_distribution<> dist(0, 9);
+	std::uniform_int_distribution<int> dist(0, 9);
 
 	return dist(gen);
 }
@@ -35,25 +35,26 @@ int Event::pot() {
 	Sleep(1000);
 	system("cls");
 	control.gotoxy(65, 25);
-	rand_value = 2;
+	rand_value = rand();
 	
 	if (pot_item_percent[rand_value] == COTTON)
 	{
 		std::cout << "솜뭉치를 얻었습니다.";
+		Sleep(3000);
 		return COTTON;
-		Sleep(1000);
 
 	}
 	else if (pot_item_percent[rand_value] == CHEWING_GUM)
 	{
 		std::cout << "껌을 얻었습니다.";
-		Sleep(1000);
+		Sleep(3000);
 		return CHEWING_GUM;
 
 	}
 	else
 	{
 		std::cout << "아무것도 나오지 않았습니다...";
+		Sleep(3000);
 		return NONE;
 	}
 
@@ -64,7 +65,6 @@ int Event::box() {
 	control.gotoxy(65, 25);
 	std::cout << "상자 여는중.";
 	Sleep(1000);
-	Sleep(1000);
 	system("cls");
 	control.gotoxy(65, 25);
 	std::cout << "상자 여는중..";
@@ -72,7 +72,6 @@ int Event::box() {
 	system("cls");
 	control.gotoxy(65, 25);
 	std::cout << "상자 여는중...";
-	Sleep(1000);
 	Sleep(1000);
 	system("cls");
 	control.gotoxy(65, 25);
@@ -82,7 +81,6 @@ int Event::box() {
 	control.gotoxy(65, 25);
 	std::cout << "상자 여는중..";
 	Sleep(1000);
-	Sleep(1000);
 	system("cls");
 	control.gotoxy(65, 25);
 	rand_value = rand();
@@ -90,35 +88,36 @@ int Event::box() {
 	if (box_item_percent[rand_value] == COTTON)
 	{
 		std::cout << "솜뭉치를 얻었습니다.";
-		Sleep(1000);
+		Sleep(3000);
 		return COTTON;
 	}
 	else if (box_item_percent[rand_value] == CHEWING_GUM)
 	{
 		std::cout << "껌을 얻었습니다.";
-		Sleep(1000);
+		Sleep(3000);
 		return CHEWING_GUM;
 
 	}
 	else if (box_item_percent[rand_value] == NONE)
 	{
 		std::cout << "아무 것도 나오지 않았습니다...";
+		Sleep(3000);
 		return NONE;
 	}
 	else if (box_item_percent[rand_value] == INSSA_RABBIT)
 	{
 		std::cout << "인싸토끼를 얻었습니다.";
-		Sleep(1000);
+		Sleep(3000);
 		return INSSA_RABBIT;
 
 	}
 	else if (box_item_percent[rand_value] == INF_GAUNTLETS)
 	{
 		std::cout << "WoW !!!! 인피니티 건틀릿을 얻었습니다.";
-		Sleep(1000);
+		Sleep(3000);
 		return INF_GAUNTLETS;
-
 	}
+	return NONE;
 }
 
 int Event::hole()
@@ -146,6 +145,7 @@ int Event::hole()
 	system("cls");
 	control.gotoxy(65, 25);
 	std::cout << "낫띵 이스 해브.....☆";
+	Sleep(3000);
 	return NONE;
 }
 
@@ -182,6 +182,7 @@ int Event::bookshelf()
 		system("cls");
 		control.gotoxy(65, 25);
 		std::cout << "보기만 해도 기분 나쁘니 그냥 가자.";
+		Sleep(3000);
 	}
 	else if (book_item_percent[rand_value] == TAGD) // TAGD
 	{
@@ -196,6 +197,7 @@ int Event::bookshelf()
 		system("cls");
 		control.gotoxy(65, 25);
 		std::cout << "이 하수구를 나가는 데 필요는 없을 것 같다.";
+		Sleep(3000);
 	}
 	else if (book_item_percent[rand_value] == GET_FARMING) // 농사의 정석, C뿌리기 획득
 	{
@@ -214,6 +216,9 @@ int Event::bookshelf()
 		system("cls");
 		control.gotoxy(65, 25);
 		std::cout << "F맞은 성적표를 공주에게 사용하면 특별한 일이 일어날지도...?";
+		Sleep(3000);
+
+		return GET_FARMING;
 	}
 
 	return NONE;
@@ -230,6 +235,7 @@ int Event::mouse() {
 		system("cls");
 		control.gotoxy(65, 25);
 		std::cout << "그저 쥐구멍인가 보다.";
+		Sleep(3000);
 		return NONE;
 	}
 
@@ -248,10 +254,11 @@ int Event::mouse() {
 			std::cout << b[i];
 			Sleep(200);
 		}
+		Sleep(3000);
 		return GET_CHEESE;
 	}
 
-
+	return NONE;
 }
 
 int Event::circle() {
@@ -283,6 +290,7 @@ int Event::circle() {
 	if (circle_item_percent[rand_value] == NONE)
 	{
 		std::cout << "아무일도.. 없었다..";
+		Sleep(3000);
 	}
 	else if (circle_item_percent[rand_value] == MAGIC_CIRCLE)
 	{
@@ -291,9 +299,11 @@ int Event::circle() {
 		system("cls");
 		control.gotoxy(65, 25);
 		std::cout << "Magic Circle을 획득하였습니다!!";
-		Sleep(1000);
+		Sleep(3000);
 		return MAGIC_CIRCLE;
 	}
+
+	return NONE;
 }
 
 int Event::button() {
@@ -325,6 +335,7 @@ int Event::button() {
 		system("cls");
 		control.gotoxy(65, 25);
 		std::cout << "눌러봐도 아무 일도 없었다.";
+		Sleep(3000);
 	}
 	else if (button_tiem_percent[rand_value] == GET_DEADHARD)
 	{
@@ -364,6 +375,7 @@ int Event::button() {
 
 		return GET_DEADHARD;
 	}
+	return NONE;
 }
 
 int Event::paper() {
@@ -396,6 +408,7 @@ int Event::paper() {
 	if (paper_item_percent[rand_value] == NONE)
 	{
 		std::cout << "맞춰보니.. 청구서였다고한다..";
+		Sleep(3000);
 		return NONE;
 	}
 	else if (paper_item_percent[rand_value] == F_GRADE_CARD)
@@ -405,9 +418,11 @@ int Event::paper() {
 		system("cls");
 		control.gotoxy(65, 25);
 		std::cout << "F 맞은 성적표를 얻었습니다.";
-		Sleep(1000);
+		Sleep(3000);
 		return F_GRADE_CARD;
 	}
+
+	return NONE;
 }
 
 int Event::npc(int sewer_in)
@@ -427,7 +442,7 @@ int Event::npc(int sewer_in)
 		system("cls");
 		control.gotoxy(55, 25);
 		std::cout << "아이스크림을 얻었습니다!!! 야호!!!";
-		Sleep(1000);
+		Sleep(3000);
 		return MEET_IC;
 	}
 	else if (npc_item_percent[rand_value] == MEET_HOMELESS) // 노숙자
@@ -563,6 +578,7 @@ int Event::npc(int sewer_in)
 			return NONE;
 		}
 	}
+	return NONE;
 }
 
 
@@ -598,7 +614,7 @@ int Event::pipe(int sewer_in) // 오브젝트 목록 : 파이프
 		system("cls");
 		control.gotoxy(55, 25);
 		std::cout << "앵무새 날개를 도리베어의 팔에 부착하였다!!";
-		Sleep(1000);
+		Sleep(3000);
 		return GET_Wings;
 	}
 
@@ -610,7 +626,7 @@ int Event::pipe(int sewer_in) // 오브젝트 목록 : 파이프
 		system("cls");
 		control.gotoxy(55, 25);
 		std::cout << "고양이 팔을 내 팔에 부착하였다!!";
-		Sleep(1000);
+		Sleep(3000);
 		return GET_CatArms;
 	}
 
@@ -626,10 +642,11 @@ int Event::pipe(int sewer_in) // 오브젝트 목록 : 파이프
 		system("cls");
 		control.gotoxy(55, 25);
 		std::cout << "도리베어의 팔을 부착하였다!";
-		Sleep(1000);
+		Sleep(3000);
 		return GET_DoriArms;
 	}
 
+	return NONE;
 }
 
 int Event::lake(int sewer_in) // 오브젝트 목록 : 고인 물
@@ -664,7 +681,7 @@ int Event::lake(int sewer_in) // 오브젝트 목록 : 고인 물
 		system("cls");
 		control.gotoxy(55, 25);
 		std::cout << "나뭇가지를 도리베어의 팔에 부착하였다!!";
-		Sleep(1000);
+		Sleep(3000);
 		return GET_Twigs;
 	}
 
@@ -676,7 +693,7 @@ int Event::lake(int sewer_in) // 오브젝트 목록 : 고인 물
 		system("cls");
 		control.gotoxy(55, 25);
 		std::cout << "바비인형의 팔을 내 팔에 부착하였다!!";
-		Sleep(1000);
+		Sleep(3000);
 		return GET_BarbieArms;
 	}
 
@@ -692,7 +709,9 @@ int Event::lake(int sewer_in) // 오브젝트 목록 : 고인 물
 		system("cls");
 		control.gotoxy(55, 25);
 		std::cout << "아이스크림 팔을 부착하였다!";
-		Sleep(1000);
+		Sleep(3000);
 		return GET_BarbieArms;
 	}
+
+	return NONE;
 }

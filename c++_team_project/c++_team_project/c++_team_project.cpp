@@ -13,7 +13,16 @@ int main()
 
 	Game game;
 
-	game.game();
+	while (true) {
+		bool do_end = game.game();
+		if (do_end == false) {
+			system("cls");
+			std::cout << "바이바이";
+			break;
+		}
+		game.battle(game.battle_check());
+		system("cls");
+	}
 
 	return 0;
 }

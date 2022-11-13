@@ -97,6 +97,7 @@ bool Room::sewer() {
 		}
 		}
 	}
+	return true;
 }
 
 bool Room::crossroad() {
@@ -605,7 +606,7 @@ int Room::c_room3_1() {
 			control.gotoxy(x + 15, M);
 			std::cout << "                                                                                 ";
 			control.gotoxy(x + 15, L);
-			std::cout << "책파이프에서는 도리베어의 팔을 얻을 수 있습니다.";
+			std::cout << "파이프에서는 도리베어의 팔을 얻을 수 있습니다.";
 		}
 		else if (y == M)
 		{

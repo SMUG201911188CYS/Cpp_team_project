@@ -25,18 +25,17 @@ public:
 	int Get_Passive() { return this->passive; }
 
 	int normal_attack(Character& Hit_Object);
-	bool Skill_Attack(Character& Hit_Object);
+	virtual int Skill_Attack(Character& Hit_Object) = 0;
 };
 
 
-class Player : Character {
+class Player : public Character {
 private :
 	std::string arms; // ÆÈ
-	std::string skill_discription; // ÆÈ ½ºÅ³ ¼³¸í
+	std::string skill_discription; // ÆÈ ¼³¸í
 	int arms_skill_count;
 public :
-	Player();
-
+	Player(int hp = 50, int shield = 0, int ad = 0);
 	bool Set_Arms(int arms);
 
 	std::string Get_Arms() { return arms; }
@@ -46,7 +45,7 @@ public :
 	int Skill_Attack(Character& Hit_Object);
 };
 
-class Boss : Character {
+class Boss : public Character {
 private:
 	std::string boss_skill_list[4];
 	int last_bossattack;
