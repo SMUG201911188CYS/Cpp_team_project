@@ -21,6 +21,9 @@ public:
 		if (this->dori_bear.Get_Arms() == "¾øÀ½") return false;
 		else return true;
 	}
+	void hp_print();
+	void menu_print();
+	void boss_turn();
 };
 
 #endif // !__GAME_H__

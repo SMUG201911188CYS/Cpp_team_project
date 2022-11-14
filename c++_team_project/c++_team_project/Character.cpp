@@ -19,7 +19,7 @@ int Character::normal_attack(Character& Hit_Object) {
 	if (damage >= 0) Hit_Object.Set_Shield(damage); // 쉴드가 더 높으면 쉴드에서 까고, 더 낮으면 쉴드는 0, 피를 깜
 	else {
 		Hit_Object.Set_Shield(0);
-		Hit_Object.Set_HP(Hit_Object.Get_HP() - damage);
+		Hit_Object.Set_HP(Hit_Object.Get_HP() + damage);
 	}
 	return attackDamage;
 }
@@ -41,7 +41,7 @@ bool Player::Set_Arms(int arms) {
 	}
 	else if (arms == Wings) {
 		this->arms = "Wings";
-		this->skill_discription = "회오리로 적을 가둡니다. 해당 스킬로 처치시...";
+		this->skill_discription = "회오리로 적을 가둡니다.";
 		this->arms_skill_count = 3;
 		Set_AttackDamage(20);
 	}
@@ -53,7 +53,7 @@ bool Player::Set_Arms(int arms) {
 	}
 	else if (arms == CatArms) {
 		this->arms = "CatArms";
-		this->skill_discription = "냥냥펀치를 사용합니다. 해당 스킬로 처치시...";
+		this->skill_discription = "냥냥펀치를 사용합니다.";
 		this->arms_skill_count = 3;
 		Set_AttackDamage(20);
 	}
@@ -96,6 +96,7 @@ int Player::Skill_Attack(Character& Hit_Object) {
 		if (this->Get_HP() + 15 > 50) this->Set_HP(50);
 		else this->Set_HP(this->Get_HP() + 15);
 		this->arms_skill_count--;
+		
 	}
 	else {
 		return false;
@@ -120,23 +121,32 @@ int Boss::Skill_Attack(Character& Hit_Object) {
 
 	this->last_bossattack = dist(gen);
 
+	int attackDamage = 0;
+
 	if (last_bossattack == 0) {
-		Hit_Object.Set_HP(Hit_Object.Get_HP() - 5 + this->Get_AttackDamage());
-		return 5 + this->Get_AttackDamage();
+
+		attackDamage = 5 + this->Get_AttackDamage();
 	}
 	else if (last_bossattack == 1) {
-		Hit_Object.Set_HP(Hit_Object.Get_HP() - 3 + this->Get_AttackDamage());
-		return 3 + this->Get_AttackDamage();
+		attackDamage = 3 + this->Get_AttackDamage();
 	}
 	else if (last_bossattack == 2) {
-		Hit_Object.Set_HP(Hit_Object.Get_HP() - 10 + this->Get_AttackDamage());
-		return 10 + this->Get_AttackDamage();
+		attackDamage = 10 + this->Get_AttackDamage();
 	}
 	else if (last_bossattack == 3) {
 		this->Set_AttackDamage(this->Get_AttackDamage() + 2);
 		return 0;
 	}
-	return 0;
+
+	int damage = Hit_Object.Get_Shield() - attackDamage;
+	if (damage >= 0) Hit_Object.Set_Shield(damage); // 쉴드가 더 높으면 쉴드에서 까고, 더 낮으면 쉴드는 0, 피를 깜
+	else {
+		Hit_Object.Set_Shield(0);
+		Hit_Object.Set_HP(Hit_Object.Get_HP() + damage);
+	}
+
+	return attackDamage;
+
 }
 
 std::string Boss::Get_Last_Attack_Name() {

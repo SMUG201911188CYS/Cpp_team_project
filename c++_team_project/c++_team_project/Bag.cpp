@@ -34,10 +34,10 @@ void Bag::bag_list_print() {
 	std::cout << std::left << bag_item[0].get_item_name();
 	control.gotoxy(75, 50);
 	std::cout.width(10);
-	std::cout << std::left << bag_item[0].get_item_name();
+	std::cout << std::left << bag_item[1].get_item_name();
 	control.gotoxy(85, 50);
 	std::cout.width(10);
-	std::cout << std::left << bag_item[0].get_item_name();
+	std::cout << std::left << bag_item[2].get_item_name();
 }
 
 int Bag::bag_open(Character & player, Character & boss) {
@@ -116,6 +116,7 @@ int Bag::bag_open(Character & player, Character & boss) {
 		}
 		if (y == 47)
 		{
+
 			control.gotoxy(x - 50, 48);
 			printf("                                           ");
 			control.gotoxy(x - 50, 49);

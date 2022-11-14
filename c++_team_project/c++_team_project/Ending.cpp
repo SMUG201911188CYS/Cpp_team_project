@@ -90,7 +90,7 @@ void Ending::show_BadEnd01() {
 	cout << "도리베어는 너무 두려웠어";
 	Sleep(3000);
 	system("cls");
-	exit(0);
+	
 }
 void Ending::show_BadEnd02() {
 	int x = 45, y = 25;
@@ -192,7 +192,7 @@ void Ending::show_BadEnd02() {
 	cout << "도리베어는 결국 해내지 못했어";
 	Sleep(3000);
 	system("cls");
-	exit(0);
+	
 }
 void Ending::show_SPEnd03() {
 	int x = 45, y = 25;
@@ -292,7 +292,7 @@ void Ending::show_SPEnd03() {
 	cout << "하지만 도리베어는 절대 포기하지 않아";
 	Sleep(3000);
 	system("cls");
-	exit(0);
+	
 }
 void Ending::show_SPEnd04() {
 	int x = 45, y = 25;
@@ -399,7 +399,7 @@ void Ending::show_SPEnd04() {
 	cout << "내가 앵무새 인형이 된다 해도";
 	Sleep(3000);
 	system("cls");
-	exit(0);
+	
 }
 void Ending::show_SPEnd05() {
 	int x = 45, y = 25;
@@ -497,7 +497,7 @@ void Ending::show_SPEnd05() {
 	cout << "내가 고양이 인형이 된다 해도";
 	Sleep(3000);
 	system("cls");
-	exit(0);
+	
 }
 void Ending::show_SPEnd06() {
 	int x = 45, y = 25;
@@ -595,7 +595,7 @@ void Ending::show_SPEnd06() {
 	cout << "내가 곰인형인 것이 제일 좋아";
 	Sleep(3000);
 	system("cls");
-	exit(0);
+	
 }
 void Ending::show_SPEnd07() {
 	int x = 45, y = 25;
@@ -687,7 +687,7 @@ void Ending::show_SPEnd07() {
 	cout << "그녀의 소중한 것은";
 	Sleep(3000);
 	system("cls");
-	exit(0);
+	
 }
 void Ending::show_TrueEnd08() {
 	int x = 45, y = 25;
@@ -779,7 +779,7 @@ void Ending::show_TrueEnd08() {
 	cout << "그녀의 하나뿐인 곰인형이니까";
 	Sleep(3000);
 	system("cls");
-	exit(0);
+	
 }
 void Ending::show_NorEnd09() {
 	int x = 45, y = 25;
@@ -867,7 +867,7 @@ void Ending::show_NorEnd09() {
 	cout << "네가 결국 해냈어";
 	Sleep(3000);
 	system("cls");
-	exit(0);
+	
 }
 void Ending::show_SPEnd10() {
 	int x = 45, y = 25;
@@ -1016,7 +1016,7 @@ void Ending::show_SPEnd10() {
 	cout << "그럼 안녕";
 	Sleep(3000);
 	system("cls");
-	exit(0);
+	
 }
 void Ending::show_SPEnd11() {
 	int x = 45, y = 25;
@@ -1165,5 +1165,5 @@ void Ending::show_SPEnd11() {
 	cout << "The End";
 	Sleep(3000);
 	system("cls");
-	exit(0);
+	
 }
