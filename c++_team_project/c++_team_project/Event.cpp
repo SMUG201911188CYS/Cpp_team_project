@@ -254,7 +254,10 @@ int Event::mouse() {
 			std::cout << b[i];
 			Sleep(200);
 		}
+		control.gotoxy(65, 29);
+		std::cout << "치즈를 먹어서 보호막 10을 얻었습니다.";
 		Sleep(3000);
+
 		return GET_CHEESE;
 	}
 

@@ -14,15 +14,6 @@ Character::Character(int hp, int shield, int ad) {
 	this->passive = 0;
 }
 
-int Character::normal_attack(Character& Hit_Object) {
-	int damage = Hit_Object.Get_Shield() - attackDamage;
-	if (damage >= 0) Hit_Object.Set_Shield(damage); // 쉴드가 더 높으면 쉴드에서 까고, 더 낮으면 쉴드는 0, 피를 깜
-	else {
-		Hit_Object.Set_Shield(0);
-		Hit_Object.Set_HP(Hit_Object.Get_HP() + damage);
-	}
-	return attackDamage;
-}
 
 // 도리베어(플레이어) 구현
 
@@ -30,6 +21,12 @@ Player::Player(int hp, int shield, int ad) : Character(hp, shield, ad) {
 	this->arms = "없음";
 	this->skill_discription = "없음";
 	this->arms_skill_count = 0;
+}
+
+int Player::normal_attack(Character & Hit_Object) {
+	int damage = this->Get_AttackDamage();
+	Hit_Object.Set_HP(Hit_Object.Get_HP() - damage);
+	return damage;
 }
 
 bool Player::Set_Arms(int arms) {
@@ -106,7 +103,7 @@ int Player::Skill_Attack(Character& Hit_Object) {
 
 // 공주(보스) 구현
 
-Boss::Boss() : Character(200, 0, 0) {
+Boss::Boss() : Character(150, 0, 0) {
 	this->last_bossattack = 0;
 	this->boss_skill_list[0] = "손목 때리기";
 	this->boss_skill_list[1] = "육두문자";
@@ -138,11 +135,15 @@ int Boss::Skill_Attack(Character& Hit_Object) {
 		return 0;
 	}
 
-	int damage = Hit_Object.Get_Shield() - attackDamage;
-	if (damage >= 0) Hit_Object.Set_Shield(damage); // 쉴드가 더 높으면 쉴드에서 까고, 더 낮으면 쉴드는 0, 피를 깜
+	if (Hit_Object.Get_Shield() > 0) {
+		if (Hit_Object.Get_Shield() >= attackDamage) Hit_Object.Set_Shield(Hit_Object.Get_Shield() - attackDamage);
+		else {
+			Hit_Object.Set_HP(Hit_Object.Get_HP() - (attackDamage - Hit_Object.Get_Shield()));
+			Hit_Object.Set_Shield(0);
+		}
+	}
 	else {
-		Hit_Object.Set_Shield(0);
-		Hit_Object.Set_HP(Hit_Object.Get_HP() + damage);
+		Hit_Object.Set_HP(Hit_Object.Get_HP() - attackDamage);
 	}
 
 	return attackDamage;

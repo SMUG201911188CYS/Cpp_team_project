@@ -24,7 +24,6 @@ public:
 	int Get_AttackDamage() { return this->attackDamage; }
 	int Get_Passive() { return this->passive; }
 
-	int normal_attack(Character& Hit_Object);
 	virtual int Skill_Attack(Character& Hit_Object) = 0;
 };
 
@@ -41,7 +40,7 @@ public :
 	std::string Get_Arms() { return arms; }
 	std::string Get_Skill_Discription() { return skill_discription; }
 	int Get_Skill_Count() { return arms_skill_count; }
-
+	int normal_attack(Character& Hit_Object);
 	int Skill_Attack(Character& Hit_Object);
 };
 

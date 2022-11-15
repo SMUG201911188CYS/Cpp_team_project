@@ -34,6 +34,7 @@ enum keboard { // 키 입력 enum
 enum item_effect_list { // 아이템 효과
 	CHEWING_GUM_SHIELD = 10, // 피 10 회복
 	CHEESE_SHIELD = CHEWING_GUM_SHIELD,
+	ICREAM_HEAL = 20, // 피 20 회복
 	COTTON_HEAL = CHEWING_GUM_SHIELD, // 피 10 회복
 	INSSA_RABBIT_DM_DOWN = 2, // 공격력 2 감소
 	MAGIC_CIRCLE_DM = 50, // 50의 데미지 입힘

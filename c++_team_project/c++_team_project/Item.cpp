@@ -31,6 +31,10 @@ bool Item::init_item(int item) { // 아이템 얻을 시 초기화
 		this->item = "인피니티 건틀릿";
 		this->item_effect = "둘 중 한명은 사라집니다.";
 	}
+	else if (item == MEET_IC) {
+		this->item = "아이스크림";
+		this->item_effect = "체력을 20 회복합니다.";
+	}
 	else if (item == NONE) {
 		this->item = "없음";
 		this->item_effect = "    ";
@@ -103,6 +107,25 @@ int Item::use_item(Character & player, Character & boss) {
 		int hp = player.Get_HP();
 		if (hp + COTTON_HEAL >= PLAYER_HP) player.Set_HP(PLAYER_HP);
 		else player.Set_HP(COTTON_HEAL + hp);
+	}
+	else if (item == "아이스크림") { // 사용하면 피 20 회복
+		control.gotoxy(65, 47);
+		printf("                                         ");
+		control.gotoxy(65, 48);
+		printf("                                         ");
+		control.gotoxy(65, 49);
+		printf("                                         ");
+		control.gotoxy(65, 50);
+		printf("                                         ");
+		control.gotoxy(65, 48);
+		printf("아이스크림을 사용했습니다!");
+		Sleep(1500);
+		control.gotoxy(65, 48);
+		printf("피 20을 회복했습니다!  ");
+		Sleep(1500);
+		int hp = player.Get_HP();
+		if (hp + ICREAM_HEAL >= PLAYER_HP) player.Set_HP(PLAYER_HP);
+		else player.Set_HP(ICREAM_HEAL + hp);
 	}
 	else if (item == "인싸 토끼") { // 사용하면 보스 공격력 1 감소
 		control.gotoxy(65, 47);

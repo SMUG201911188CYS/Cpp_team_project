@@ -49,6 +49,7 @@ bool Game::game() {
 
 		// 이벤트 처리
 		if (what_Event == pot) get_2 = event.pot();
+		else if (what_Event == box) get_2 = event.box();
 		else if (what_Event == npc) get_2 = event.npc(room.Get_Sewer_in());
 		else if (what_Event == bookshelf) get_2 = event.bookshelf();
 		else if (what_Event == hole) get_2 = event.hole();
@@ -70,7 +71,7 @@ bool Game::game() {
 		else if (what_Event == paper) get_3 = event.paper();
 		else if (what_Event == mouse) get_3 = event.mouse();
 		else if (what_Event == hole) get_3 = event.hole();
-		else get_1 = NONE;
+		else get_3 = NONE;
 
 	}
 	else if (room.Get_Sewer_in() == 2) { // G417 하수구 
@@ -123,7 +124,7 @@ bool Game::game() {
 		else if (what_Event == mouse) get_3 = event.mouse();
 		else if (what_Event == box) get_3 = event.box();
 		else if (what_Event == hole) get_3 = event.hole();
-		else get_1 = NONE;
+		else get_3 = NONE;
 
 	}
 	else if (room.Get_Sewer_in() == 3) { // 그냥 하수구
@@ -176,7 +177,7 @@ bool Game::game() {
 		else if (what_Event == mouse) get_3 = event.mouse();
 		else if (what_Event == box) get_3 = event.box();
 		else if (what_Event == hole) get_3 = event.hole();
-		else get_1 = NONE;
+		else get_3 = NONE;
 
 	}
 
@@ -212,9 +213,13 @@ bool Game::game() {
 void Game::hp_print() {
 
 	control.gotoxy(10, 5);
+	std::cout << "                           ";
+	control.gotoxy(10, 5);
 	std::cout << "보스 HP : " << princess.Get_HP();
 	control.gotoxy(10, 10);
-	std::cout << "플레이어 HP : " << dori_bear.Get_HP();
+	std::cout << "                           ";
+	control.gotoxy(10, 10);
+	std::cout << "플레이어 HP : " << dori_bear.Get_HP() + dori_bear.Get_Shield();
 
 }
 
@@ -421,7 +426,7 @@ bool Game::battle(bool do_battle) {
 							Sleep(1500);
 							system("cls");
 							end.show_SPEnd04();
-							break;
+							return true;
 						}
 					}
 				}
@@ -462,7 +467,7 @@ bool Game::battle(bool do_battle) {
 							Sleep(1500);
 							system("cls");
 							end.show_SPEnd05();
-							break;
+							return true;
 						}
 
 						boss_turn();
@@ -518,6 +523,7 @@ bool Game::battle(bool do_battle) {
 					{
 						system("cls");
 						end.show_TrueEnd08();
+						return true;
 					}
 					control.gotoxy(x - 65, y + 3);
 					std::cout << "                                     ";
@@ -551,36 +557,36 @@ bool Game::battle(bool do_battle) {
 				{
 					int boss_attack_damage = princess.Skill_Attack(dori_bear);
 
-					control.gotoxy(x - 50, y + 3);
+					control.gotoxy(x - 65, y + 3);
 					std::cout << "                                     ";
-					control.gotoxy(x - 50, y + 1);
+					control.gotoxy(x - 65, y + 1);
 					std::cout << "                                     ";
-					control.gotoxy(x - 50, y + 2);
+					control.gotoxy(x - 65, y + 2);
 					std::cout << "                                     ";
-					control.gotoxy(x - 50, y + 1);
+					control.gotoxy(x - 65, y + 1);
 					std::cout << "공주가 " << princess.Get_Last_Attack_Name() << "를 시전했다!";
 					Sleep(1500);
 
 					if (boss_attack_damage == 0) {
-						control.gotoxy(x - 50, y + 3);
+						control.gotoxy(x - 65, y + 3);
 						std::cout << "                                     ";
-						control.gotoxy(x - 50, y + 1);
+						control.gotoxy(x - 65, y + 1);
 						std::cout << "                                     ";
-						control.gotoxy(x - 50, y + 2);
+						control.gotoxy(x - 65, y + 2);
 						std::cout << "                                     ";
-						control.gotoxy(x - 50, y + 1);
+						control.gotoxy(x - 65, y + 1);
 						std::cout << "공주님의 공격력이 2 증가하였다!";
 						Sleep(1500);
 					}
 					else {
-						control.gotoxy(x - 50, y + 3);
+						control.gotoxy(x - 65, y + 3);
 						std::cout << "                                     ";
-						control.gotoxy(x - 50, y + 1);
+						control.gotoxy(x - 65, y + 1);
 						std::cout << "                                     ";
-						control.gotoxy(x - 50, y + 2);
+						control.gotoxy(x - 65, y + 2);
 						std::cout << "                                     ";
-						control.gotoxy(x - 50, y + 1);
-						std::cout << "도리베어는" << boss_attack_damage << "의 피해를 입었다!";
+						control.gotoxy(x - 65, y + 1);
+						std::cout << "도리베어는 " << boss_attack_damage << "의 피해를 입었다!";
 						Sleep(1500);
 					}
 					hp_print();
@@ -593,36 +599,52 @@ bool Game::battle(bool do_battle) {
 				if (check == F_GRADE_CARD_END) {
 					Sleep(1500);
 					end.show_SPEnd07();
-					break;
+					return true;
 				}
 				else if (check == INF_GAUNTLETS_END1) {
 					Sleep(1500);
 					end.show_SPEnd10();
-					break;
+					return true;
 
 				}
 				else if (check == INF_GAUTTLETS_END2) {
 					Sleep(1500);
 					end.show_SPEnd11();
+					return true;
 				}
 				else if (check == EXIT || check == false) {
-					control.gotoxy(x - 50, 47);
-					std::cout << "                                           ";
-					control.gotoxy(x - 50, 48);
-					std::cout << "                                           ";
-					control.gotoxy(x - 50, 49);
-					std::cout << "                                           ";
+					control.gotoxy(115, 47);
+					std::cout << "            ";
+					control.gotoxy(115, 48);
+					std::cout << "            ";
+					control.gotoxy(115, 49);
+					std::cout << "            ";
+					control.gotoxy(115, 50);
+					std::cout << "            ";
 				}
 				else {
-
-					control.gotoxy(x - 50, 47);
-					std::cout << "                                           ";
-					control.gotoxy(x - 50, 48);
-					std::cout << "                                           ";
-					control.gotoxy(x - 50, 49);
-					std::cout << "                                           ";
+					control.gotoxy(x - 65, y + 1);
+					std::cout << "                                     ";
+					control.gotoxy(x - 65, y + 2);
+					std::cout << "                                     ";
+					control.gotoxy(115, 47);
+					std::cout << "            ";
+					control.gotoxy(115, 48);
+					std::cout << "            ";
+					control.gotoxy(115, 49);
+					std::cout << "            ";
+					control.gotoxy(115, 50);
+					std::cout << "            ";
 					boss_turn();
 				}
+				control.gotoxy(115, 47);
+				std::cout << "   기본공격";
+				control.gotoxy(115, 50);
+				std::cout << "   특수공격";
+				control.gotoxy(130, 47);
+				std::cout << "   방어하기";
+				control.gotoxy(130, 50);
+				std::cout << "▶ 가방보기";
 			}
 		}
 		}
@@ -687,8 +709,10 @@ bool Game::battle(bool do_battle) {
 			if (dori_bear.Get_Arms() == "Dori_Bear_arms")
 			{
 				end.show_SPEnd06();
+				return true;
 			}
 			end.show_NorEnd09();
+			return true;
 		}
 		if (dori_bear.Get_HP() == 0)
 		{
@@ -697,8 +721,10 @@ bool Game::battle(bool do_battle) {
 			if (dori_bear.Get_Passive() == DEADHARD)
 			{
 				end.show_SPEnd03();
+				return true;
 			}
 			end.show_BadEnd02();
+			return true;
 		}
 	}
 }
