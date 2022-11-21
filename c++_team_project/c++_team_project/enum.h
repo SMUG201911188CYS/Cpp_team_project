@@ -32,7 +32,7 @@ enum keboard { // 키 입력 enum
 };
 
 enum item_effect_list { // 아이템 효과
-	CHEWING_GUM_SHIELD = 10, // 피 10 회복
+	CHEWING_GUM_SHIELD = 10, // 보호막 10
 	CHEESE_SHIELD = CHEWING_GUM_SHIELD,
 	ICREAM_HEAL = 20, // 피 20 회복
 	COTTON_HEAL = CHEWING_GUM_SHIELD, // 피 10 회복

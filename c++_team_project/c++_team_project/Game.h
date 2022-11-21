@@ -24,6 +24,7 @@ public:
 	void hp_print();
 	void menu_print();
 	void boss_turn();
+	void test_setting();
 };
 
 #endif // !__GAME_H__

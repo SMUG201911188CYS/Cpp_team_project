@@ -73,7 +73,7 @@ bool Player::Set_Arms(int arms) {
 	return true;
 }
 
-int Player::Skill_Attack(Character& Hit_Object) {
+int Player::Skill_Attack(Character& Hit_Object, bool temp) {
 
 	if (this->arms == "Wings") {
 		Hit_Object.Set_HP(Hit_Object.Get_HP() - 25);
@@ -111,7 +111,7 @@ Boss::Boss() : Character(150, 0, 0) {
 	this->boss_skill_list[3] = "╪Зажа╓";
 }
 
-int Boss::Skill_Attack(Character& Hit_Object) {
+int Boss::Skill_Attack(Character& Hit_Object, bool is_defense) {
 	std::random_device rd;
 	std::mt19937 gen(rd());
 	std::uniform_int_distribution<int> dist(0, 3);
@@ -135,15 +135,29 @@ int Boss::Skill_Attack(Character& Hit_Object) {
 		return 0;
 	}
 
-	if (Hit_Object.Get_Shield() > 0) {
-		if (Hit_Object.Get_Shield() >= attackDamage) Hit_Object.Set_Shield(Hit_Object.Get_Shield() - attackDamage);
-		else {
-			Hit_Object.Set_HP(Hit_Object.Get_HP() - (attackDamage - Hit_Object.Get_Shield()));
-			Hit_Object.Set_Shield(0);
+	if (is_defense == true) {
+		attackDamage /= 2;
+		if (Hit_Object.Get_Shield() > 0) {
+			if (Hit_Object.Get_Shield() >= attackDamage) Hit_Object.Set_Shield(Hit_Object.Get_Shield() - attackDamage);
+			else {
+				Hit_Object.Set_HP(Hit_Object.Get_HP() - (attackDamage - Hit_Object.Get_Shield()));
+				Hit_Object.Set_Shield(0);
+			}
 		}
+		else
+			Hit_Object.Set_HP(Hit_Object.Get_HP() - attackDamage);
 	}
 	else {
-		Hit_Object.Set_HP(Hit_Object.Get_HP() - attackDamage);
+		if (Hit_Object.Get_Shield() > 0) {
+			if (Hit_Object.Get_Shield() >= attackDamage) Hit_Object.Set_Shield(Hit_Object.Get_Shield() - attackDamage);
+			else {
+				Hit_Object.Set_HP(Hit_Object.Get_HP() - (attackDamage - Hit_Object.Get_Shield()));
+				Hit_Object.Set_Shield(0);
+			}
+		}
+		else {
+			Hit_Object.Set_HP(Hit_Object.Get_HP() - attackDamage);
+		}
 	}
 
 	return attackDamage;

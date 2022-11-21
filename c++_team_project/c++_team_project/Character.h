@@ -24,7 +24,7 @@ public:
 	int Get_AttackDamage() { return this->attackDamage; }
 	int Get_Passive() { return this->passive; }
 
-	virtual int Skill_Attack(Character& Hit_Object) = 0;
+	virtual int Skill_Attack(Character& Hit_Object, bool is_defense) = 0;
 };
 
 
@@ -41,7 +41,7 @@ public :
 	std::string Get_Skill_Discription() { return skill_discription; }
 	int Get_Skill_Count() { return arms_skill_count; }
 	int normal_attack(Character& Hit_Object);
-	int Skill_Attack(Character& Hit_Object);
+	int Skill_Attack(Character& Hit_Object, bool temp);
 };
 
 class Boss : public Character {
@@ -50,7 +50,7 @@ private:
 	int last_bossattack;
 public:
 	Boss();
-	int Skill_Attack(Character& Hit_Object);
+	int Skill_Attack(Character& Hit_Object, bool is_defense);
 	std::string Get_Last_Attack_Name();
 };
 

@@ -28,7 +28,7 @@ bool Item::init_item(int item) { // 아이템 얻을 시 초기화
 		this->item_effect = "F맞은 성적표를 던집니다.";
 	}
 	else if (item == INF_GAUNTLETS) {
-		this->item = "인피니티 건틀릿";
+		this->item = "건틀릿";
 		this->item_effect = "둘 중 한명은 사라집니다.";
 	}
 	else if (item == MEET_IC) {
@@ -184,10 +184,10 @@ int Item::use_item(Character & player, Character & boss) {
 			boss.Set_AttackDamage(boss_ad + F_GRADE_CARD_DM_UP);
 		}
 	}
-	else if (item == "인피니티 건틀릿") { // 사용하면 보스 or 플레이어 둘중에 한명 사망, 히든 엔딩
+	else if (item == "건틀릿") { // 사용하면 보스 or 플레이어 둘중에 한명 사망, 히든 엔딩
 		std::random_device rd;
 		std::mt19937 gen(rd());
-		std::normal_distribution<> dist(0, 1);
+		std::normal_distribution<> dist(1, 10);
 
 		control.gotoxy(65, 47);
 		printf("                                         ");
@@ -201,7 +201,10 @@ int Item::use_item(Character & player, Character & boss) {
 		printf("인피니티 건틀릿을 사용했습니다!");
 		Sleep(1500);
 
-		if (dist(gen) == 0) return INF_GAUNTLETS_END1;
+		int check = dist(gen);
+		check %= 2;
+		if (check == 0) return INF_GAUTTLETS_END2;
+		else if (check == 1) return INF_GAUNTLETS_END1;
 		else return INF_GAUTTLETS_END2;
 	}
 	else {

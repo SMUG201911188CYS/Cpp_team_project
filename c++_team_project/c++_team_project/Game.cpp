@@ -3,6 +3,7 @@
 
 bool Game::game() {
 
+
 	int what_Event = NONE;
 	int get_1 = NONE;
 	int get_2 = NONE;
@@ -243,7 +244,7 @@ void Game::boss_turn() {
 	int x = 115;
 	int y = 47;
 
-	int boss_attack_damage = princess.Skill_Attack(dori_bear);
+	int boss_attack_damage = princess.Skill_Attack(dori_bear, true);
 
 	control.gotoxy(x - 50, y + 3);
 	std::cout << "                                     ";
@@ -286,6 +287,8 @@ bool Game::battle(bool do_battle) {
 	std::string bossListen[8] = { "공주 : %&^$#%@!!# %!!!!!!","도리베어: (방어하기를 계속 해보자.)","공주 : $#^%$&*%^$^#" ,"도리베어: (방어하기를 계속 해보자.)","공주 : ㅆ>>>ㅡㅡㅢㅣ>>>>", "도리베어: (조금 진정된 것 같다),","공주 : 으>>>>>으으ㅡㅡㅇ>>>","도리베어: (흠..조금 더 기다려보자)" };
 	int listen_cnt = 0;
 
+	test_setting();
+	do_battle = true;
 
 	if (do_battle == false) {
 		end.show_BadEnd01();
@@ -378,7 +381,6 @@ bool Game::battle(bool do_battle) {
 				hp_print();
 
 				boss_turn();
-
 			}  // 일반 공격
 
 			else if (x == 115 && y == 50) { // 특수공격
@@ -386,7 +388,7 @@ bool Game::battle(bool do_battle) {
 				{
 					if (dori_bear.Get_Skill_Count() > 0)
 					{
-						int end_check = dori_bear.Skill_Attack(princess);
+						int end_check = dori_bear.Skill_Attack(princess, true);
 
 						control.gotoxy(x - 50, y - 2);
 						std::cout << "                                          ";
@@ -434,7 +436,7 @@ bool Game::battle(bool do_battle) {
 				{
 					if (dori_bear.Get_Skill_Count() > 0)
 					{
-						int end_check = dori_bear.Skill_Attack(princess);
+						int end_check = dori_bear.Skill_Attack(princess, true);
 
 						control.gotoxy(x - 50, y - 2);
 						std::cout << "                                          ";
@@ -477,7 +479,7 @@ bool Game::battle(bool do_battle) {
 				{
 					if (dori_bear.Get_Skill_Count() > 0)
 					{
-						int end_check = dori_bear.Skill_Attack(princess);
+						int end_check = dori_bear.Skill_Attack(princess, true);
 
 						control.gotoxy(x - 50, y - 2);
 						std::cout << "                                          ";
@@ -503,6 +505,7 @@ bool Game::battle(bool do_battle) {
 						hp_print();
 
 						boss_turn();
+
 					}
 				}
 			}
@@ -555,7 +558,7 @@ bool Game::battle(bool do_battle) {
 				}
 				else
 				{
-					int boss_attack_damage = princess.Skill_Attack(dori_bear);
+					int boss_attack_damage = princess.Skill_Attack(dori_bear, true);
 
 					control.gotoxy(x - 65, y + 3);
 					std::cout << "                                     ";
@@ -598,17 +601,20 @@ bool Game::battle(bool do_battle) {
 
 				if (check == F_GRADE_CARD_END) {
 					Sleep(1500);
+					system("cls");
 					end.show_SPEnd07();
 					return true;
 				}
 				else if (check == INF_GAUNTLETS_END1) {
 					Sleep(1500);
+					system("cls");
 					end.show_SPEnd10();
 					return true;
 
 				}
 				else if (check == INF_GAUTTLETS_END2) {
 					Sleep(1500);
+					system("cls");
 					end.show_SPEnd11();
 					return true;
 				}
@@ -635,6 +641,7 @@ bool Game::battle(bool do_battle) {
 					std::cout << "            ";
 					control.gotoxy(115, 50);
 					std::cout << "            ";
+					hp_print();
 					boss_turn();
 				}
 				control.gotoxy(115, 47);
@@ -726,5 +733,77 @@ bool Game::battle(bool do_battle) {
 			end.show_BadEnd02();
 			return true;
 		}
+	}
+}
+
+
+void Game::test_setting() {
+	
+	using std::cout;
+	using std::cin;
+	using std::endl;
+
+	while (1) {
+		cout << "팔을 고르세요" << endl;
+		cout << "1. 도리베어 팔 // 2. 날개 // 3. 나뭇가지 // 4. 고양이 팔 // 5. 인형 팔 // 6. 아이스크림 팔" << endl;
+		cout << ">>";
+		int arm_temp = 0;
+		cin >> arm_temp;
+
+		if (arm_temp > 6 || arm_temp < 1) {
+			cout << "다시 입력" << endl;;
+		}
+		else {
+			this->dori_bear.Set_Arms(arm_temp + 14);
+			break;
+		}
+	}
+
+	while (1) {
+		cout << "패시브를 고르세요" << endl;
+		cout << "1. 데드하드 // 2. 씨뿌리기 // 3. 경청하기" << endl;
+		cout << ">>";
+		int passive_temp = 0;
+		cin >> passive_temp;
+
+		if (passive_temp == 1) {
+			this->dori_bear.Set_Passive(DEADHARD);
+			break;
+		}
+		else if (passive_temp == 2) {
+			this->dori_bear.Set_Passive(FARMING);
+			break;
+		}
+		else if (passive_temp == 3) {
+			this->dori_bear.Set_Passive(LISTEN);
+			break;
+		}
+		else {
+			cout << "다시 입력" << endl;
+		}
+	}
+
+	int i = 0;
+	int item_temp = 0;
+	while (i < 3) {
+		cout << "아이템을 고르세요 (최대 3번 // " << i << "지금 고른 횟수)" <<endl;
+		cout << "1. 껌 (보호막 10 획득)" << endl;
+		cout << "2. 솜 (체력 10 회복)" << endl;
+		cout << "3. 없음 (없음)" << endl;
+		cout << "4. 인싸토끼 (보스 공격력 2 감소)" << endl;
+		cout << "5. 인피니티 건틀릿 (1/2확률로 상대 kill or 나 kill)" << endl;
+		cout << "6. 매직서클 (보스에게 50의 데미지)" << endl;
+		cout << "7. f맞은 성적표 (씨뿌리기 있는 상태로 쓰면 히든엔딩)" << endl;
+		cout << ">>";
+		cin >> item_temp;
+
+		if (item_temp > 7 || item_temp < 1) {
+			cout << "다시 입력" << endl;
+		}
+		else {
+			this->player_bag.input_item(item_temp);
+			i++;
+		}
+
 	}
 }
