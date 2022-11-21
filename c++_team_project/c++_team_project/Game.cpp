@@ -287,9 +287,6 @@ bool Game::battle(bool do_battle) {
 	std::string bossListen[8] = { "공주 : %&^$#%@!!# %!!!!!!","도리베어: (방어하기를 계속 해보자.)","공주 : $#^%$&*%^$^#" ,"도리베어: (방어하기를 계속 해보자.)","공주 : ㅆ>>>ㅡㅡㅢㅣ>>>>", "도리베어: (조금 진정된 것 같다),","공주 : 으>>>>>으으ㅡㅡㅇ>>>","도리베어: (흠..조금 더 기다려보자)" };
 	int listen_cnt = 0;
 
-	test_setting();
-	do_battle = true;
-
 	if (do_battle == false) {
 		end.show_BadEnd01();
 		return true;
