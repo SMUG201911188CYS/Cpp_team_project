@@ -4,11 +4,10 @@
 
 #include "enum.h"
 
-class Item {
+class Item : public Control {
 private:
 	std::string item;
 	std::string item_effect;
-	Control control;
 public:
 	Item();
 	bool init_item(int item);

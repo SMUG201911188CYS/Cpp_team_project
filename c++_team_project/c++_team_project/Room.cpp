@@ -10,24 +10,24 @@ Room::Room() {
 }
 
 bool Room::intro() {
-	control.gotoxy(36, START);
+	Control::gotoxy(36, START);
 	std::cout << "▶";
-	control.gotoxy(36, y + EXIT);
+	Control::gotoxy(36, y + EXIT);
 	std::cout << "   ";
 
 	while (1)
 	{
-		int n = control.key_control();
+		int n = Control::key_control();
 		switch (n)
 		{
 		case UP:
 		{
 			if (y > START)
 			{
-				control.gotoxy(36, EXIT);
+				Control::gotoxy(36, EXIT);
 				std::cout << "   ";
 				y += -7;
-				control.gotoxy(36, START);
+				Control::gotoxy(36, START);
 				std::cout << "▶";
 			}
 			break;
@@ -36,10 +36,10 @@ bool Room::intro() {
 		{
 			if (y < EXIT)
 			{
-				control.gotoxy(36, START);
+				Control::gotoxy(36, START);
 				std::cout << "   ";
 				y += 7;
-				control.gotoxy(36, EXIT);
+				Control::gotoxy(36, EXIT);
 				std::cout << "▶";
 			}
 			break;
@@ -56,29 +56,29 @@ bool Room::intro() {
 bool Room::sewer() {
 	x = 0;
 	y = 50;
-	control.gotoxy(x, L);
+	Control::gotoxy(x, L);
 	std::cout << "▶ 왼쪽 하수구";
-	control.gotoxy(x, M);
+	Control::gotoxy(x, M);
 	std::cout << "   가운데 하수구";
-	control.gotoxy(x, R);
+	Control::gotoxy(x, R);
 	std::cout << "   오른쪽 하수구";
 	while (sewer_in == 0) {
-		int n = control.key_control();
+		int n = Control::key_control();
 		switch (n) {
 		case UP: {
 			if (y > L) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, --y);
+				Control::gotoxy(x, --y);
 				std::cout << "▶";
 			}
 			break;
 		}
 		case DOWN: {
 			if (y < R) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, ++y);
+				Control::gotoxy(x, ++y);
 				std::cout << "▶";
 			}
 			break;
@@ -103,29 +103,29 @@ bool Room::sewer() {
 bool Room::crossroad() {
 
 	x = 0, y = 50;
-	control.gotoxy(x, y);
+	Control::gotoxy(x, y);
 	std::cout << "▶ 왼쪽 길";
-	control.gotoxy(x, y + 1);
+	Control::gotoxy(x, y + 1);
 	std::cout << "   가운데 길";
-	control.gotoxy(x, y + 2);
+	Control::gotoxy(x, y + 2);
 	std::cout << "   오른쪽 길";
 	while (1) {
-		int n = control.key_control();
+		int n = Control::key_control();
 		switch (n) {
 		case UP: {
 			if (y > L) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, --y);
+				Control::gotoxy(x, --y);
 				std::cout << "▶";
 			}
 			break;
 		}
 		case DOWN: {
 			if (y < R) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, ++y);
+				Control::gotoxy(x, ++y);
 				std::cout << "▶";
 			}
 			break;
@@ -176,33 +176,33 @@ bool Room::crossroad() {
 int Room::c_room1_1() {
 	x = 0, y = 50;
 
-	control.gotoxy(0, L);
+	Control::gotoxy(0, L);
 	std::cout << "▶ 항아리";
-	control.gotoxy(0, M);
+	Control::gotoxy(0, M);
 	std::cout << "   상자";
-	control.gotoxy(0, R);
+	Control::gotoxy(0, R);
 	std::cout << "   구덩이";
-	control.gotoxy(x + 15, L);
+	Control::gotoxy(x + 15, L);
 	std::cout << "항아리에서는 껌, 솜뭉치, 꽝을 얻을 수 있습니다.";
 
 	while (1) {
-		int n = control.key_control();
+		int n = Control::key_control();
 
 		switch (n) {
 		case UP: {
 			if (y > L) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, --y);
+				Control::gotoxy(x, --y);
 				std::cout << "▶";
 			}
 			break;
 		}
 		case DOWN: {
 			if (y < R) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, ++y);
+				Control::gotoxy(x, ++y);
 				std::cout << "▶";
 			}
 			break;
@@ -221,25 +221,25 @@ int Room::c_room1_1() {
 		}
 		if (y == L)
 		{
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "                                                                              ";
-			control.gotoxy(x + 15, L);
+			Control::gotoxy(x + 15, L);
 			std::cout << "항아리에서는 껌, 솜뭉치, 꽝을 얻을 수 있습니다.";
 		}
 		else if (y == M)
 		{
-			control.gotoxy(x + 15, R);
+			Control::gotoxy(x + 15, R);
 			std::cout << "                                                                              ";
-			control.gotoxy(x + 15, L);
+			Control::gotoxy(x + 15, L);
 			std::cout << "                                                                              ";
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "상자에서는 껌, 솜뭉치, 인싸토끼, 인피니티 건틀릿, 꽝을 얻을 수 있습니다.";
 		}
 		else if (y == R)
 		{
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "                                                                              ";
-			control.gotoxy(x + 15, R);
+			Control::gotoxy(x + 15, R);
 			std::cout << "구덩이는 무엇일까요?";
 		}
 	}
@@ -248,33 +248,33 @@ int Room::c_room1_1() {
 int Room::c_room1_2() {
 	x = 0, y = 50;
 
-	control.gotoxy(0, L);
+	Control::gotoxy(0, L);
 	std::cout << "▶ 종이조각";
-	control.gotoxy(0, M);
+	Control::gotoxy(0, M);
 	std::cout << "   항아리";
-	control.gotoxy(0, R);
+	Control::gotoxy(0, R);
 	std::cout << "   구덩이";
-	control.gotoxy(x + 15, L);
+	Control::gotoxy(x + 15, L);
 	std::cout << "종이조각에서는 F맞은 성적표,청구서를 얻을 수 있습니다.";
 
 	while (1) {
-		int n = control.key_control();
+		int n = Control::key_control();
 
 		switch (n) {
 		case UP: {
 			if (y > L) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, --y);
+				Control::gotoxy(x, --y);
 				std::cout << "▶";
 			}
 			break;
 		}
 		case DOWN: {
 			if (y < R) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, ++y);
+				Control::gotoxy(x, ++y);
 				std::cout << "▶";
 			}
 			break;
@@ -293,25 +293,25 @@ int Room::c_room1_2() {
 		}
 		if (y == L)
 		{
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "                                                                              ";
-			control.gotoxy(x + 15, L);
+			Control::gotoxy(x + 15, L);
 			std::cout << "종이조각에서는 F맞은 성적표,청구서를 얻을 수 있습니다.";
 		}
 		else if (y == M)
 		{
-			control.gotoxy(x + 15, R);
+			Control::gotoxy(x + 15, R);
 			std::cout << "                                                                              ";
-			control.gotoxy(x + 15, L);
+			Control::gotoxy(x + 15, L);
 			std::cout << "                                                                              ";
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "항아리에서는 껌, 솜뭉치, 꽝을 얻을 수 있습니다.";
 		}
 		else if (y == R)
 		{
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "                                                                              ";
-			control.gotoxy(x + 15, R);
+			Control::gotoxy(x + 15, R);
 			std::cout << "구덩이는 무엇일까요?";
 		}
 	}
@@ -321,33 +321,33 @@ int Room::c_room1_2() {
 int Room::c_room1_3() {
 	x = 0, y = 50;
 
-	control.gotoxy(0, L);
+	Control::gotoxy(0, L);
 	std::cout << "▶ 종이조각";
-	control.gotoxy(0, M);
+	Control::gotoxy(0, M);
 	std::cout << "   상자";
-	control.gotoxy(0, R);
+	Control::gotoxy(0, R);
 	std::cout << "   항아리";
-	control.gotoxy(x + 15, L);
+	Control::gotoxy(x + 15, L);
 	std::cout << "종이조각에서는 F맞은 성적표,청구서를 얻을 수 있습니다.";
 
 	while (1) {
-		int n = control.key_control();
+		int n = Control::key_control();
 
 		switch (n) {
 		case UP: {
 			if (y > L) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, --y);
+				Control::gotoxy(x, --y);
 				std::cout << "▶";
 			}
 			break;
 		}
 		case DOWN: {
 			if (y < R) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, ++y);
+				Control::gotoxy(x, ++y);
 				std::cout << "▶";
 			}
 			break;
@@ -366,25 +366,25 @@ int Room::c_room1_3() {
 		}
 		if (y == L)
 		{
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "                                                                              ";
-			control.gotoxy(x + 15, L);
+			Control::gotoxy(x + 15, L);
 			std::cout << "종이조각에서는 F맞은 성적표,청구서를 얻을 수 있습니다.";
 		}
 		else if (y == M)
 		{
-			control.gotoxy(x + 15, R);
+			Control::gotoxy(x + 15, R);
 			std::cout << "                                                                              ";
-			control.gotoxy(x + 15, L);
+			Control::gotoxy(x + 15, L);
 			std::cout << "                                                                              ";
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "상자에서는 껌, 솜뭉치, 인싸토끼, 인피니티 건틀릿, 꽝을 얻을 수 있습니다.";
 		}
 		else if (y == R)
 		{
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "                                                                              ";
-			control.gotoxy(x + 15, R);
+			Control::gotoxy(x + 15, R);
 			std::cout << "항아리에서는 껌, 솜뭉치, 꽝을 얻을 수 있습니다.";
 		}
 	}
@@ -393,33 +393,33 @@ int Room::c_room1_3() {
 int Room::c_room2_1() {
 	x = 0, y = 50;
 
-	control.gotoxy(0, L);
+	Control::gotoxy(0, L);
 	std::cout << "▶ 책장";
-	control.gotoxy(0, M);
+	Control::gotoxy(0, M);
 	std::cout << "   이상한 사람";
-	control.gotoxy(0, R);
+	Control::gotoxy(0, R);
 	std::cout << "   항아리";
-	control.gotoxy(x + 15, L);
+	Control::gotoxy(x + 15, L);
 	std::cout << "책장에서는 농사의 정석, 수학의 정석, The art of game design을 얻을 수 있습니다.";
 
 	while (1) {
-		int n = control.key_control();
+		int n = Control::key_control();
 
 		switch (n) {
 		case UP: {
 			if (y > L) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, --y);
+				Control::gotoxy(x, --y);
 				std::cout << "▶";
 			}
 			break;
 		}
 		case DOWN: {
 			if (y < R) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, ++y);
+				Control::gotoxy(x, ++y);
 				std::cout << "▶";
 			}
 			break;
@@ -438,25 +438,25 @@ int Room::c_room2_1() {
 		}
 		if (y == L)
 		{
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "                                                                                 ";
-			control.gotoxy(x + 15, L);
+			Control::gotoxy(x + 15, L);
 			std::cout << "책장에서는 농사의 정석, 수학의 정석, The art of game design을 얻을 수 있습니다.";
 		}
 		else if (y == M)
 		{
-			control.gotoxy(x + 15, R);
+			Control::gotoxy(x + 15, R);
 			std::cout << "                                                                                 ";
-			control.gotoxy(x + 15, L);
+			Control::gotoxy(x + 15, L);
 			std::cout << "                                                                                 ";
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "정체를 알 수 없습니다. 특정 이벤트를 겪을 수 있습니다.";
 		}
 		else if (y == R)
 		{
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "                                                                              ";
-			control.gotoxy(x + 15, R);
+			Control::gotoxy(x + 15, R);
 			std::cout << "항아리에서는 껌, 솜뭉치, 꽝을 얻을 수 있습니다.";
 		}
 	}
@@ -465,33 +465,33 @@ int Room::c_room2_1() {
 int Room::c_room2_2() {
 	x = 0, y = 50;
 
-	control.gotoxy(0, L);
+	Control::gotoxy(0, L);
 	std::cout << "▶ 상자";
-	control.gotoxy(0, M);
+	Control::gotoxy(0, M);
 	std::cout << "   책장";
-	control.gotoxy(0, R);
+	Control::gotoxy(0, R);
 	std::cout << "   항아리";
-	control.gotoxy(x + 15, L);
+	Control::gotoxy(x + 15, L);
 	std::cout << "상자에서는 껌, 솜뭉치, 인싸토끼, 인피니티 건틀릿, 꽝을 얻을 수 있습니다.";
 
 	while (1) {
-		int n = control.key_control();
+		int n = Control::key_control();
 
 		switch (n) {
 		case UP: {
 			if (y > L) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, --y);
+				Control::gotoxy(x, --y);
 				std::cout << "▶";
 			}
 			break;
 		}
 		case DOWN: {
 			if (y < R) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, ++y);
+				Control::gotoxy(x, ++y);
 				std::cout << "▶";
 			}
 			break;
@@ -510,25 +510,25 @@ int Room::c_room2_2() {
 		}
 		if (y == L)
 		{
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "                                                                                 ";
-			control.gotoxy(x + 15, L);
+			Control::gotoxy(x + 15, L);
 			std::cout << "상자에서는 껌, 솜뭉치, 인싸토끼, 인피니티 건틀릿, 꽝을 얻을 수 있습니다.";
 		}
 		else if (y == M)
 		{
-			control.gotoxy(x + 15, R);
+			Control::gotoxy(x + 15, R);
 			std::cout << "                                                                                 ";
-			control.gotoxy(x + 15, L);
+			Control::gotoxy(x + 15, L);
 			std::cout << "                                                                                 ";
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "책장에서는 농사의 정석, 수학의 정석, The art of game design을 얻을 수 있습니다.";
 		}
 		else if (y == R)
 		{
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "                                                                              ";
-			control.gotoxy(x + 15, R);
+			Control::gotoxy(x + 15, R);
 			std::cout << "항아리에서는 껌, 솜뭉치, 꽝을 얻을 수 있습니다.";
 		}
 	}
@@ -537,13 +537,13 @@ int Room::c_room2_2() {
 int Room::c_room2_3() {
 	x = 0, y = 50;
 
-	control.gotoxy(0, L);
+	Control::gotoxy(0, L);
 	std::cout << "▶ 구덩이";
-	control.gotoxy(x + 15, L);
+	Control::gotoxy(x + 15, L);
 	std::cout << "구덩이는 무엇일까요?";
 
 	while (1) {
-		int n = control.key_control();
+		int n = Control::key_control();
 
 		switch (n) {
 		case SUBMIT: {
@@ -558,33 +558,33 @@ int Room::c_room2_3() {
 int Room::c_room3_1() {
 	x = 0, y = 50;
 
-	control.gotoxy(0, L);
+	Control::gotoxy(0, L);
 	std::cout << "▶ 파이프";
-	control.gotoxy(0, M);
+	Control::gotoxy(0, M);
 	std::cout << "   쥐구멍";
-	control.gotoxy(0, R);
+	Control::gotoxy(0, R);
 	std::cout << "   항아리";
-	control.gotoxy(x + 15, L);
+	Control::gotoxy(x + 15, L);
 	std::cout << "파이프에서는 도리베어의 팔을 얻을 수 있습니다.";
 
 	while (1) {
-		int n = control.key_control();
+		int n = Control::key_control();
 
 		switch (n) {
 		case UP: {
 			if (y > L) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, --y);
+				Control::gotoxy(x, --y);
 				std::cout << "▶";
 			}
 			break;
 		}
 		case DOWN: {
 			if (y < R) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, ++y);
+				Control::gotoxy(x, ++y);
 				std::cout << "▶";
 			}
 			break;
@@ -603,25 +603,25 @@ int Room::c_room3_1() {
 		}
 		if (y == L)
 		{
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "                                                                                 ";
-			control.gotoxy(x + 15, L);
+			Control::gotoxy(x + 15, L);
 			std::cout << "파이프에서는 도리베어의 팔을 얻을 수 있습니다.";
 		}
 		else if (y == M)
 		{
-			control.gotoxy(x + 15, R);
+			Control::gotoxy(x + 15, R);
 			std::cout << "                                                                                 ";
-			control.gotoxy(x + 15, L);
+			Control::gotoxy(x + 15, L);
 			std::cout << "                                                                                 ";
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "치즈가 보입니다.";
 		}
 		else if (y == R)
 		{
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "                                                                              ";
-			control.gotoxy(x + 15, R);
+			Control::gotoxy(x + 15, R);
 			std::cout << "항아리에서는 껌, 솜뭉치, 꽝을 얻을 수 있습니다.";
 		}
 	}
@@ -630,33 +630,33 @@ int Room::c_room3_1() {
 int Room::c_room3_2() {
 	x = 0, y = 50;
 
-	control.gotoxy(0, L);
+	Control::gotoxy(0, L);
 	std::cout << "▶ 고인물";
-	control.gotoxy(0, M);
+	Control::gotoxy(0, M);
 	std::cout << "   쥐구멍";
-	control.gotoxy(0, R);
+	Control::gotoxy(0, R);
 	std::cout << "   항아리";
-	control.gotoxy(x + 15, L);
+	Control::gotoxy(x + 15, L);
 	std::cout << "고인물 안을 뒤지면 무언가 나올 것 같습니다.";
 
 	while (1) {
-		int n = control.key_control();
+		int n = Control::key_control();
 
 		switch (n) {
 		case UP: {
 			if (y > L) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, --y);
+				Control::gotoxy(x, --y);
 				std::cout << "▶";
 			}
 			break;
 		}
 		case DOWN: {
 			if (y < R) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, ++y);
+				Control::gotoxy(x, ++y);
 				std::cout << "▶";
 			}
 			break;
@@ -675,25 +675,25 @@ int Room::c_room3_2() {
 		}
 		if (y == L)
 		{
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "                                                                                 ";
-			control.gotoxy(x + 15, L);
+			Control::gotoxy(x + 15, L);
 			std::cout << "고인물 안을 뒤지면 무언가 나올 것 같습니다.";
 		}
 		else if (y == M)
 		{
-			control.gotoxy(x + 15, R);
+			Control::gotoxy(x + 15, R);
 			std::cout << "                                                                                 ";
-			control.gotoxy(x + 15, L);
+			Control::gotoxy(x + 15, L);
 			std::cout << "                                                                                 ";
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "치즈가 보입니다.";
 		}
 		else if (y == R)
 		{
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "                                                                              ";
-			control.gotoxy(x + 15, R);
+			Control::gotoxy(x + 15, R);
 			std::cout << "항아리에서는 껌, 솜뭉치, 꽝을 얻을 수 있습니다.";
 		}
 	}
@@ -702,33 +702,33 @@ int Room::c_room3_2() {
 int Room::c_room3_3() {
 	x = 0, y = 50;
 
-	control.gotoxy(0, L);
+	Control::gotoxy(0, L);
 	std::cout << "▶ 종이조각";
-	control.gotoxy(0, M);
+	Control::gotoxy(0, M);
 	std::cout << "   구덩이";
-	control.gotoxy(0, R);
+	Control::gotoxy(0, R);
 	std::cout << "   항아리";
-	control.gotoxy(x + 15, L);
+	Control::gotoxy(x + 15, L);
 	std::cout << "종이조각에서는 F맞은 성적표,청구서를 얻을 수 있습니다.";
 
 	while (1) {
-		int n = control.key_control();
+		int n = Control::key_control();
 
 		switch (n) {
 		case UP: {
 			if (y > L) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, --y);
+				Control::gotoxy(x, --y);
 				std::cout << "▶";
 			}
 			break;
 		}
 		case DOWN: {
 			if (y < R) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, ++y);
+				Control::gotoxy(x, ++y);
 				std::cout << "▶";
 			}
 			break;
@@ -747,25 +747,25 @@ int Room::c_room3_3() {
 		}
 		if (y == L)
 		{
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "                                                                                 ";
-			control.gotoxy(x + 15, L);
+			Control::gotoxy(x + 15, L);
 			std::cout << "종이조각에서는 F맞은 성적표,청구서를 얻을 수 있습니다.";
 		}
 		else if (y == M)
 		{
-			control.gotoxy(x + 15, R);
+			Control::gotoxy(x + 15, R);
 			std::cout << "                                                                                 ";
-			control.gotoxy(x + 15, L);
+			Control::gotoxy(x + 15, L);
 			std::cout << "                                                                                 ";
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "구덩이는 무엇일까요?";
 		}
 		else if (y == R)
 		{
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "                                                                              ";
-			control.gotoxy(x + 15, R);
+			Control::gotoxy(x + 15, R);
 			std::cout << "항아리에서는 껌, 솜뭉치, 꽝을 얻을 수 있습니다.";
 		}
 	}
@@ -776,33 +776,33 @@ int Room::c_room3_3() {
 int Room::n_room1_1() {
 	x = 0, y = 50;
 
-	control.gotoxy(0, L);
+	Control::gotoxy(0, L);
 	std::cout << "▶ 종이조각";
-	control.gotoxy(0, M);
+	Control::gotoxy(0, M);
 	std::cout << "   상자";
-	control.gotoxy(0, R);
+	Control::gotoxy(0, R);
 	std::cout << "   구덩이";
-	control.gotoxy(x + 15, L);
+	Control::gotoxy(x + 15, L);
 	std::cout << "종이조각에서는 F맞은 성적표,청구서를 얻을 수 있습니다.";
 
 	while (1) {
-		int n = control.key_control();
+		int n = Control::key_control();
 
 		switch (n) {
 		case UP: {
 			if (y > L) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, --y);
+				Control::gotoxy(x, --y);
 				std::cout << "▶";
 			}
 			break;
 		}
 		case DOWN: {
 			if (y < R) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, ++y);
+				Control::gotoxy(x, ++y);
 				std::cout << "▶";
 			}
 			break;
@@ -821,25 +821,25 @@ int Room::n_room1_1() {
 		}
 		if (y == L)
 		{
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "                                                                              ";
-			control.gotoxy(x + 15, L);
+			Control::gotoxy(x + 15, L);
 			std::cout << "종이조각에서는 F맞은 성적표,청구서를 얻을 수 있습니다.";
 		}
 		else if (y == M)
 		{
-			control.gotoxy(x + 15, R);
+			Control::gotoxy(x + 15, R);
 			std::cout << "                                                                              ";
-			control.gotoxy(x + 15, L);
+			Control::gotoxy(x + 15, L);
 			std::cout << "                                                                              ";
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "상자에서는 껌, 솜뭉치, 인싸토끼, 인피니티 건틀릿, 꽝을 얻을 수 있습니다.";
 		}
 		else if (y == R)
 		{
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "                                                                              ";
-			control.gotoxy(x + 15, R);
+			Control::gotoxy(x + 15, R);
 			std::cout << "구덩이는 무엇일까요?";
 		}
 	}
@@ -848,33 +848,33 @@ int Room::n_room1_1() {
 int Room::n_room1_2() {
 	x = 0, y = 50;
 
-	control.gotoxy(0, L);
+	Control::gotoxy(0, L);
 	std::cout << "▶ 쥐구멍";
-	control.gotoxy(0, M);
+	Control::gotoxy(0, M);
 	std::cout << "   항아리";
-	control.gotoxy(0, R);
+	Control::gotoxy(0, R);
 	std::cout << "   구덩이";
-	control.gotoxy(x + 15, L);
+	Control::gotoxy(x + 15, L);
 	std::cout << "치즈가 보입니다.";
 
 	while (1) {
-		int n = control.key_control();
+		int n = Control::key_control();
 
 		switch (n) {
 		case UP: {
 			if (y > L) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, --y);
+				Control::gotoxy(x, --y);
 				std::cout << "▶";
 			}
 			break;
 		}
 		case DOWN: {
 			if (y < R) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, ++y);
+				Control::gotoxy(x, ++y);
 				std::cout << "▶";
 			}
 			break;
@@ -893,25 +893,25 @@ int Room::n_room1_2() {
 		}
 		if (y == L)
 		{
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "                                                                              ";
-			control.gotoxy(x + 15, L);
+			Control::gotoxy(x + 15, L);
 			std::cout << "치즈가 보입니다.";
 		}
 		else if (y == M)
 		{
-			control.gotoxy(x + 15, R);
+			Control::gotoxy(x + 15, R);
 			std::cout << "                                                                              ";
-			control.gotoxy(x + 15, L);
+			Control::gotoxy(x + 15, L);
 			std::cout << "                                                                              ";
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "항아리에서는 껌, 솜뭉치, 꽝을 얻을 수 있습니다.";
 		}
 		else if (y == R)
 		{
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "                                                                              ";
-			control.gotoxy(x + 15, R);
+			Control::gotoxy(x + 15, R);
 			std::cout << "구덩이는 무엇일까요?";
 		}
 	}
@@ -921,33 +921,33 @@ int Room::n_room1_2() {
 int Room::n_room1_3() {
 	x = 0, y = 50;
 
-	control.gotoxy(0, L);
+	Control::gotoxy(0, L);
 	std::cout << "▶ 상자";
-	control.gotoxy(0, M);
+	Control::gotoxy(0, M);
 	std::cout << "   구덩이";
-	control.gotoxy(0, R);
+	Control::gotoxy(0, R);
 	std::cout << "   항아리";
-	control.gotoxy(x + 15, L);
+	Control::gotoxy(x + 15, L);
 	std::cout << "상자에서는 껌, 솜뭉치, 인싸토끼, 인피니티 건틀릿, 꽝을 얻을 수 있습니다.";
 
 	while (1) {
-		int n = control.key_control();
+		int n = Control::key_control();
 
 		switch (n) {
 		case UP: {
 			if (y > L) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, --y);
+				Control::gotoxy(x, --y);
 				std::cout << "▶";
 			}
 			break;
 		}
 		case DOWN: {
 			if (y < R) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, ++y);
+				Control::gotoxy(x, ++y);
 				std::cout << "▶";
 			}
 			break;
@@ -966,25 +966,25 @@ int Room::n_room1_3() {
 		}
 		if (y == L)
 		{
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "                                                                              ";
-			control.gotoxy(x + 15, L);
+			Control::gotoxy(x + 15, L);
 			std::cout << "상자에서는 껌, 솜뭉치, 인싸토끼, 인피니티 건틀릿, 꽝을 얻을 수 있습니다.";
 		}
 		else if (y == M)
 		{
-			control.gotoxy(x + 15, R);
+			Control::gotoxy(x + 15, R);
 			std::cout << "                                                                              ";
-			control.gotoxy(x + 15, L);
+			Control::gotoxy(x + 15, L);
 			std::cout << "                                                                              ";
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "구덩이는 무엇일까요?";
 		}
 		else if (y == R)
 		{
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "                                                                              ";
-			control.gotoxy(x + 15, R);
+			Control::gotoxy(x + 15, R);
 			std::cout << "항아리에서는 껌, 솜뭉치, 꽝을 얻을 수 있습니다.";
 		}
 	}
@@ -993,33 +993,33 @@ int Room::n_room1_3() {
 int Room::n_room2_1() {
 	x = 0, y = 50;
 
-	control.gotoxy(0, L);
+	Control::gotoxy(0, L);
 	std::cout << "▶ 스위치";
-	control.gotoxy(0, M);
+	Control::gotoxy(0, M);
 	std::cout << "   구덩이";
-	control.gotoxy(0, R);
+	Control::gotoxy(0, R);
 	std::cout << "   이상한 사람";
-	control.gotoxy(x + 15, L);
+	Control::gotoxy(x + 15, L);
 	std::cout << "스위치를 누르면 어떤 일이 발생할 수도 있습니다.";
 
 	while (1) {
-		int n = control.key_control();
+		int n = Control::key_control();
 
 		switch (n) {
 		case UP: {
 			if (y > L) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, --y);
+				Control::gotoxy(x, --y);
 				std::cout << "▶";
 			}
 			break;
 		}
 		case DOWN: {
 			if (y < R) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, ++y);
+				Control::gotoxy(x, ++y);
 				std::cout << "▶";
 			}
 			break;
@@ -1038,25 +1038,25 @@ int Room::n_room2_1() {
 		}
 		if (y == L)
 		{
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "                                                                                 ";
-			control.gotoxy(x + 15, L);
+			Control::gotoxy(x + 15, L);
 			std::cout << "스위치를 누르면 어떤 일이 발생할 수도 있습니다.";
 		}
 		else if (y == M)
 		{
-			control.gotoxy(x + 15, R);
+			Control::gotoxy(x + 15, R);
 			std::cout << "                                                                                 ";
-			control.gotoxy(x + 15, L);
+			Control::gotoxy(x + 15, L);
 			std::cout << "                                                                                 ";
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "구덩이는 무엇일까요?";
 		}
 		else if (y == R)
 		{
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "                                                                              ";
-			control.gotoxy(x + 15, R);
+			Control::gotoxy(x + 15, R);
 			std::cout << "정체를 알 수 없습니다. 특정 이벤트를 겪을 수 있습니다.";
 		}
 	}
@@ -1065,33 +1065,33 @@ int Room::n_room2_1() {
 int Room::n_room2_2() {
 	x = 0, y = 50;
 
-	control.gotoxy(0, L);
+	Control::gotoxy(0, L);
 	std::cout << "▶ 상자";
-	control.gotoxy(0, M);
+	Control::gotoxy(0, M);
 	std::cout << "   스위치";
-	control.gotoxy(0, R);
+	Control::gotoxy(0, R);
 	std::cout << "   종이조각";
-	control.gotoxy(x + 15, L);
+	Control::gotoxy(x + 15, L);
 	std::cout << "상자에서는 껌, 솜뭉치, 인싸토끼, 인피니티 건틀릿, 꽝을 얻을 수 있습니다.";
 
 	while (1) {
-		int n = control.key_control();
+		int n = Control::key_control();
 
 		switch (n) {
 		case UP: {
 			if (y > L) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, --y);
+				Control::gotoxy(x, --y);
 				std::cout << "▶";
 			}
 			break;
 		}
 		case DOWN: {
 			if (y < R) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, ++y);
+				Control::gotoxy(x, ++y);
 				std::cout << "▶";
 			}
 			break;
@@ -1110,25 +1110,25 @@ int Room::n_room2_2() {
 		}
 		if (y == L)
 		{
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "                                                                                 ";
-			control.gotoxy(x + 15, L);
+			Control::gotoxy(x + 15, L);
 			std::cout << "상자에서는 껌, 솜뭉치, 인싸토끼, 인피니티 건틀릿, 꽝을 얻을 수 있습니다.";
 		}
 		else if (y == M)
 		{
-			control.gotoxy(x + 15, R);
+			Control::gotoxy(x + 15, R);
 			std::cout << "                                                                                 ";
-			control.gotoxy(x + 15, L);
+			Control::gotoxy(x + 15, L);
 			std::cout << "                                                                                 ";
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "스위치를 누르면 어떤 일이 발생할 수도 있습니다.";
 		}
 		else if (y == R)
 		{
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "                                                                              ";
-			control.gotoxy(x + 15, R);
+			Control::gotoxy(x + 15, R);
 			std::cout << "종이조각에서는 F맞은 성적표,청구서를 얻을 수 있습니다.";
 		}
 	}
@@ -1137,13 +1137,13 @@ int Room::n_room2_2() {
 int Room::n_room2_3() {
 	x = 0, y = 50;
 
-	control.gotoxy(0, L);
+	Control::gotoxy(0, L);
 	std::cout << "▶ 구덩이";
-	control.gotoxy(x + 15, L);
+	Control::gotoxy(x + 15, L);
 	std::cout << "구덩이는 무엇일까요?";
 
 	while (1) {
-		int n = control.key_control();
+		int n = Control::key_control();
 
 		switch (n) {
 		case SUBMIT: {
@@ -1158,33 +1158,33 @@ int Room::n_room2_3() {
 int Room::n_room3_1() {
 	x = 0, y = 50;
 
-	control.gotoxy(0, L);
+	Control::gotoxy(0, L);
 	std::cout << "▶ 파이프";
-	control.gotoxy(0, M);
+	Control::gotoxy(0, M);
 	std::cout << "   쥐구멍";
-	control.gotoxy(0, R);
+	Control::gotoxy(0, R);
 	std::cout << "   상자";
-	control.gotoxy(x + 15, L);
+	Control::gotoxy(x + 15, L);
 	std::cout << "파이프에서는 도리베어의 팔을 얻을 수 있습니다.";
 
 	while (1) {
-		int n = control.key_control();
+		int n = Control::key_control();
 
 		switch (n) {
 		case UP: {
 			if (y > L) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, --y);
+				Control::gotoxy(x, --y);
 				std::cout << "▶";
 			}
 			break;
 		}
 		case DOWN: {
 			if (y < R) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, ++y);
+				Control::gotoxy(x, ++y);
 				std::cout << "▶";
 			}
 			break;
@@ -1203,25 +1203,25 @@ int Room::n_room3_1() {
 		}
 		if (y == L)
 		{
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "                                                                                 ";
-			control.gotoxy(x + 15, L);
+			Control::gotoxy(x + 15, L);
 			std::cout << "파이프에서는 도리베어의 팔을 얻을 수 있습니다.";
 		}
 		else if (y == M)
 		{
-			control.gotoxy(x + 15, R);
+			Control::gotoxy(x + 15, R);
 			std::cout << "                                                                                 ";
-			control.gotoxy(x + 15, L);
+			Control::gotoxy(x + 15, L);
 			std::cout << "                                                                                 ";
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "치즈가 보입니다.";
 		}
 		else if (y == R)
 		{
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "                                                                              ";
-			control.gotoxy(x + 15, R);
+			Control::gotoxy(x + 15, R);
 			std::cout << "상자에서는 껌, 솜뭉치, 인싸토끼, 인피니티 건틀릿, 꽝을 얻을 수 있습니다.";
 		}
 	}
@@ -1230,33 +1230,33 @@ int Room::n_room3_1() {
 int Room::n_room3_2() {
 	x = 0, y = 50;
 
-	control.gotoxy(0, L);
+	Control::gotoxy(0, L);
 	std::cout << "▶ 고인물";
-	control.gotoxy(0, M);
+	Control::gotoxy(0, M);
 	std::cout << "   쥐구멍";
-	control.gotoxy(0, R);
+	Control::gotoxy(0, R);
 	std::cout << "   구덩이";
-	control.gotoxy(x + 15, L);
+	Control::gotoxy(x + 15, L);
 	std::cout << "고인물 안을 뒤지면 무언가 나올 것 같습니다.";
 
 	while (1) {
-		int n = control.key_control();
+		int n = Control::key_control();
 
 		switch (n) {
 		case UP: {
 			if (y > L) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, --y);
+				Control::gotoxy(x, --y);
 				std::cout << "▶";
 			}
 			break;
 		}
 		case DOWN: {
 			if (y < R) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, ++y);
+				Control::gotoxy(x, ++y);
 				std::cout << "▶";
 			}
 			break;
@@ -1275,25 +1275,25 @@ int Room::n_room3_2() {
 		}
 		if (y == L)
 		{
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "                                                                                 ";
-			control.gotoxy(x + 15, L);
+			Control::gotoxy(x + 15, L);
 			std::cout << "고인물 안을 뒤지면 무언가 나올 것 같습니다.";
 		}
 		else if (y == M)
 		{
-			control.gotoxy(x + 15, R);
+			Control::gotoxy(x + 15, R);
 			std::cout << "                                                                                 ";
-			control.gotoxy(x + 15, L);
+			Control::gotoxy(x + 15, L);
 			std::cout << "                                                                                 ";
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "치즈가 보입니다.";
 		}
 		else if (y == R)
 		{
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "                                                                              ";
-			control.gotoxy(x + 15, R);
+			Control::gotoxy(x + 15, R);
 			std::cout << "구덩이는 무엇일까요?";
 		}
 	}
@@ -1302,33 +1302,33 @@ int Room::n_room3_2() {
 int Room::n_room3_3() {
 	x = 0, y = 50;
 
-	control.gotoxy(0, L);
+	Control::gotoxy(0, L);
 	std::cout << "▶ 쥐구멍";
-	control.gotoxy(0, M);
+	Control::gotoxy(0, M);
 	std::cout << "   구덩이";
-	control.gotoxy(0, R);
+	Control::gotoxy(0, R);
 	std::cout << "   항아리";
-	control.gotoxy(x + 15, L);
+	Control::gotoxy(x + 15, L);
 	std::cout << "치즈가 보입니다.";
 
 	while (1) {
-		int n = control.key_control();
+		int n = Control::key_control();
 
 		switch (n) {
 		case UP: {
 			if (y > L) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, --y);
+				Control::gotoxy(x, --y);
 				std::cout << "▶";
 			}
 			break;
 		}
 		case DOWN: {
 			if (y < R) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, ++y);
+				Control::gotoxy(x, ++y);
 				std::cout << "▶";
 			}
 			break;
@@ -1347,25 +1347,25 @@ int Room::n_room3_3() {
 		}
 		if (y == L)
 		{
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "                                                                                 ";
-			control.gotoxy(x + 15, L);
+			Control::gotoxy(x + 15, L);
 			std::cout << "치즈가 보입니다.";
 		}
 		else if (y == M)
 		{
-			control.gotoxy(x + 15, R);
+			Control::gotoxy(x + 15, R);
 			std::cout << "                                                                                 ";
-			control.gotoxy(x + 15, L);
+			Control::gotoxy(x + 15, L);
 			std::cout << "                                                                                 ";
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "구덩이는 무엇일까요?";
 		}
 		else if (y == R)
 		{
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "                                                                              ";
-			control.gotoxy(x + 15, R);
+			Control::gotoxy(x + 15, R);
 			std::cout << "항아리에서는 껌, 솜뭉치, 꽝을 얻을 수 있습니다.";
 		}
 	}
@@ -1377,33 +1377,33 @@ int Room::n_room3_3() {
 int Room::g_room1_1() {
 	x = 0, y = 50;
 
-	control.gotoxy(0, L);
+	Control::gotoxy(0, L);
 	std::cout << "▶ 상자";
-	control.gotoxy(0, M);
+	Control::gotoxy(0, M);
 	std::cout << "   구덩이";
-	control.gotoxy(0, R);
+	Control::gotoxy(0, R);
 	std::cout << "   종이조각";
-	control.gotoxy(x + 15, L);
+	Control::gotoxy(x + 15, L);
 	std::cout << "상자에서는 껌, 솜뭉치, 인싸토끼, 인피니티 건틀릿, 꽝을 얻을 수 있습니다.";
 
 	while (1) {
-		int n = control.key_control();
+		int n = Control::key_control();
 
 		switch (n) {
 		case UP: {
 			if (y > L) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, --y);
+				Control::gotoxy(x, --y);
 				std::cout << "▶";
 			}
 			break;
 		}
 		case DOWN: {
 			if (y < R) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, ++y);
+				Control::gotoxy(x, ++y);
 				std::cout << "▶";
 			}
 			break;
@@ -1422,25 +1422,25 @@ int Room::g_room1_1() {
 		}
 		if (y == L)
 		{
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "                                                                              ";
-			control.gotoxy(x + 15, L);
+			Control::gotoxy(x + 15, L);
 			std::cout << "상자에서는 껌, 솜뭉치, 인싸토끼, 인피니티 건틀릿, 꽝을 얻을 수 있습니다.";
 		}
 		else if (y == M)
 		{
-			control.gotoxy(x + 15, R);
+			Control::gotoxy(x + 15, R);
 			std::cout << "                                                                              ";
-			control.gotoxy(x + 15, L);
+			Control::gotoxy(x + 15, L);
 			std::cout << "                                                                              ";
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "구덩이는 무엇일까요?";
 		}
 		else if (y == R)
 		{
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "                                                                              ";
-			control.gotoxy(x + 15, R);
+			Control::gotoxy(x + 15, R);
 			std::cout << "종이조각에서는 F맞은 성적표,청구서를 얻을 수 있습니다.";
 		}
 	}
@@ -1449,33 +1449,33 @@ int Room::g_room1_1() {
 int Room::g_room1_2() {
 	x = 0, y = 50;
 
-	control.gotoxy(0, L);
+	Control::gotoxy(0, L);
 	std::cout << "▶ 쥐구멍";
-	control.gotoxy(0, M);
+	Control::gotoxy(0, M);
 	std::cout << "   항아리";
-	control.gotoxy(0, R);
+	Control::gotoxy(0, R);
 	std::cout << "   구덩이";
-	control.gotoxy(x + 15, L);
+	Control::gotoxy(x + 15, L);
 	std::cout << "치즈가 보입니다.";
 
 	while (1) {
-		int n = control.key_control();
+		int n = Control::key_control();
 
 		switch (n) {
 		case UP: {
 			if (y > L) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, --y);
+				Control::gotoxy(x, --y);
 				std::cout << "▶";
 			}
 			break;
 		}
 		case DOWN: {
 			if (y < R) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, ++y);
+				Control::gotoxy(x, ++y);
 				std::cout << "▶";
 			}
 			break;
@@ -1494,25 +1494,25 @@ int Room::g_room1_2() {
 		}
 		if (y == L)
 		{
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "                                                                              ";
-			control.gotoxy(x + 15, L);
+			Control::gotoxy(x + 15, L);
 			std::cout << "치즈가 보입니다.";
 		}
 		else if (y == M)
 		{
-			control.gotoxy(x + 15, R);
+			Control::gotoxy(x + 15, R);
 			std::cout << "                                                                              ";
-			control.gotoxy(x + 15, L);
+			Control::gotoxy(x + 15, L);
 			std::cout << "                                                                              ";
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "항아리에서는 껌, 솜뭉치, 꽝을 얻을 수 있습니다.";
 		}
 		else if (y == R)
 		{
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "                                                                              ";
-			control.gotoxy(x + 15, R);
+			Control::gotoxy(x + 15, R);
 			std::cout << "구덩이는 무엇일까요?";
 		}
 	}
@@ -1522,13 +1522,13 @@ int Room::g_room1_2() {
 int Room::g_room1_3() {
 	x = 0, y = 50;
 
-	control.gotoxy(0, L);
+	Control::gotoxy(0, L);
 	std::cout << "▶ 구덩이";
-	control.gotoxy(x + 15, L);
+	Control::gotoxy(x + 15, L);
 	std::cout << "구덩이는 무엇일까요?";
 
 	while (1) {
-		int n = control.key_control();
+		int n = Control::key_control();
 
 		switch (n) {
 		case SUBMIT: {
@@ -1543,33 +1543,33 @@ int Room::g_room1_3() {
 int Room::g_room2_1() {
 	x = 0, y = 50;
 
-	control.gotoxy(0, L);
+	Control::gotoxy(0, L);
 	std::cout << "▶ 이상한 원";
-	control.gotoxy(0, M);
+	Control::gotoxy(0, M);
 	std::cout << "   상자";
-	control.gotoxy(0, R);
+	Control::gotoxy(0, R);
 	std::cout << "   구덩이";
-	control.gotoxy(x + 15, L);
+	Control::gotoxy(x + 15, L);
 	std::cout << "이상한 원에선 Magic Circle을 획득할 수 있습니다.";
 
 	while (1) {
-		int n = control.key_control();
+		int n = Control::key_control();
 
 		switch (n) {
 		case UP: {
 			if (y > L) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, --y);
+				Control::gotoxy(x, --y);
 				std::cout << "▶";
 			}
 			break;
 		}
 		case DOWN: {
 			if (y < R) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, ++y);
+				Control::gotoxy(x, ++y);
 				std::cout << "▶";
 			}
 			break;
@@ -1588,25 +1588,25 @@ int Room::g_room2_1() {
 		}
 		if (y == L)
 		{
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "                                                                                 ";
-			control.gotoxy(x + 15, L);
+			Control::gotoxy(x + 15, L);
 			std::cout << "이상한 원에선 Magic Circle을 획득할 수 있습니다.";
 		}
 		else if (y == M)
 		{
-			control.gotoxy(x + 15, R);
+			Control::gotoxy(x + 15, R);
 			std::cout << "                                                                                 ";
-			control.gotoxy(x + 15, L);
+			Control::gotoxy(x + 15, L);
 			std::cout << "                                                                                 ";
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "상자에서는 껌, 솜뭉치, 인싸토끼, 인피니티 건틀릿, 꽝을 얻을 수 있습니다.";
 		}
 		else if (y == R)
 		{
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "                                                                              ";
-			control.gotoxy(x + 15, R);
+			Control::gotoxy(x + 15, R);
 			std::cout << "구덩이는 무엇일까요?";
 		}
 	}
@@ -1615,33 +1615,33 @@ int Room::g_room2_1() {
 int Room::g_room2_2() {
 	x = 0, y = 50;
 
-	control.gotoxy(0, L);
+	Control::gotoxy(0, L);
 	std::cout << "▶ 이상한 사람";
-	control.gotoxy(0, M);
+	Control::gotoxy(0, M);
 	std::cout << "   항아리";
-	control.gotoxy(0, R);
+	Control::gotoxy(0, R);
 	std::cout << "   상자";
-	control.gotoxy(x + 15, L);
+	Control::gotoxy(x + 15, L);
 	std::cout << "정체를 알 수 없습니다. 특정 이벤트를 겪을 수 있습니다.";
 
 	while (1) {
-		int n = control.key_control();
+		int n = Control::key_control();
 
 		switch (n) {
 		case UP: {
 			if (y > L) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, --y);
+				Control::gotoxy(x, --y);
 				std::cout << "▶";
 			}
 			break;
 		}
 		case DOWN: {
 			if (y < R) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, ++y);
+				Control::gotoxy(x, ++y);
 				std::cout << "▶";
 			}
 			break;
@@ -1660,25 +1660,25 @@ int Room::g_room2_2() {
 		}
 		if (y == L)
 		{
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "                                                                                 ";
-			control.gotoxy(x + 15, L);
+			Control::gotoxy(x + 15, L);
 			std::cout << "정체를 알 수 없습니다. 특정 이벤트를 겪을 수 있습니다.";
 		}
 		else if (y == M)
 		{
-			control.gotoxy(x + 15, R);
+			Control::gotoxy(x + 15, R);
 			std::cout << "                                                                                 ";
-			control.gotoxy(x + 15, L);
+			Control::gotoxy(x + 15, L);
 			std::cout << "                                                                                 ";
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "항아리에서는 껌, 솜뭉치, 꽝을 얻을 수 있습니다.";
 		}
 		else if (y == R)
 		{
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "                                                                              ";
-			control.gotoxy(x + 15, R);
+			Control::gotoxy(x + 15, R);
 			std::cout << "상자에서는 껌, 솜뭉치, 인싸토끼, 인피니티 건틀릿, 꽝을 얻을 수 있습니다.";
 		}
 	}
@@ -1687,33 +1687,33 @@ int Room::g_room2_2() {
 int Room::g_room2_3() {
 	x = 0, y = 50;
 
-	control.gotoxy(0, L);
+	Control::gotoxy(0, L);
 	std::cout << "▶ 이상한 사람";
-	control.gotoxy(0, M);
+	Control::gotoxy(0, M);
 	std::cout << "   이상한 원";
-	control.gotoxy(0, R);
+	Control::gotoxy(0, R);
 	std::cout << "   구덩이";
-	control.gotoxy(x + 15, L);
+	Control::gotoxy(x + 15, L);
 	std::cout << "정체를 알 수 없습니다. 특정 이벤트를 겪을 수 있습니다.";
 
 	while (1) {
-		int n = control.key_control();
+		int n = Control::key_control();
 
 		switch (n) {
 		case UP: {
 			if (y > L) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, --y);
+				Control::gotoxy(x, --y);
 				std::cout << "▶";
 			}
 			break;
 		}
 		case DOWN: {
 			if (y < R) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, ++y);
+				Control::gotoxy(x, ++y);
 				std::cout << "▶";
 			}
 			break;
@@ -1732,25 +1732,25 @@ int Room::g_room2_3() {
 		}
 		if (y == L)
 		{
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "                                                                                 ";
-			control.gotoxy(x + 15, L);
+			Control::gotoxy(x + 15, L);
 			std::cout << "정체를 알 수 없습니다. 특정 이벤트를 겪을 수 있습니다.";
 		}
 		else if (y == M)
 		{
-			control.gotoxy(x + 15, R);
+			Control::gotoxy(x + 15, R);
 			std::cout << "                                                                                 ";
-			control.gotoxy(x + 15, L);
+			Control::gotoxy(x + 15, L);
 			std::cout << "                                                                                 ";
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "이상한 원에선 Magic Circle을 획득할 수 있습니다.";
 		}
 		else if (y == R)
 		{
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "                                                                              ";
-			control.gotoxy(x + 15, R);
+			Control::gotoxy(x + 15, R);
 			std::cout << "구덩이는 무엇일까요?";
 		}
 	}
@@ -1759,33 +1759,33 @@ int Room::g_room2_3() {
 int Room::g_room3_1() {
 	x = 0, y = 50;
 
-	control.gotoxy(0, L);
+	Control::gotoxy(0, L);
 	std::cout << "▶ 파이프";
-	control.gotoxy(0, M);
+	Control::gotoxy(0, M);
 	std::cout << "   쥐구멍";
-	control.gotoxy(0, R);
+	Control::gotoxy(0, R);
 	std::cout << "   구덩이";
-	control.gotoxy(x + 15, L);
+	Control::gotoxy(x + 15, L);
 	std::cout << "파이프에서는 도리베어의 팔을 얻을 수 있습니다.";
 
 	while (1) {
-		int n = control.key_control();
+		int n = Control::key_control();
 
 		switch (n) {
 		case UP: {
 			if (y > L) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, --y);
+				Control::gotoxy(x, --y);
 				std::cout << "▶";
 			}
 			break;
 		}
 		case DOWN: {
 			if (y < R) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, ++y);
+				Control::gotoxy(x, ++y);
 				std::cout << "▶";
 			}
 			break;
@@ -1804,25 +1804,25 @@ int Room::g_room3_1() {
 		}
 		if (y == L)
 		{
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "                                                                                 ";
-			control.gotoxy(x + 15, L);
+			Control::gotoxy(x + 15, L);
 			std::cout << "파이프에서는 도리베어의 팔을 얻을 수 있습니다.";
 		}
 		else if (y == M)
 		{
-			control.gotoxy(x + 15, R);
+			Control::gotoxy(x + 15, R);
 			std::cout << "                                                                                 ";
-			control.gotoxy(x + 15, L);
+			Control::gotoxy(x + 15, L);
 			std::cout << "                                                                                 ";
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "치즈가 보입니다.";
 		}
 		else if (y == R)
 		{
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "                                                                              ";
-			control.gotoxy(x + 15, R);
+			Control::gotoxy(x + 15, R);
 			std::cout << "구덩이는 무엇일까요?";
 		}
 	}
@@ -1831,33 +1831,33 @@ int Room::g_room3_1() {
 int Room::g_room3_2() {
 	x = 0, y = 50;
 
-	control.gotoxy(0, L);
+	Control::gotoxy(0, L);
 	std::cout << "▶ 고인물";
-	control.gotoxy(0, M);
+	Control::gotoxy(0, M);
 	std::cout << "   쥐구멍";
-	control.gotoxy(0, R);
+	Control::gotoxy(0, R);
 	std::cout << "   상자";
-	control.gotoxy(x + 15, L);
+	Control::gotoxy(x + 15, L);
 	std::cout << "고인물 안을 뒤지면 무언가 나올 것 같습니다.";
 
 	while (1) {
-		int n = control.key_control();
+		int n = Control::key_control();
 
 		switch (n) {
 		case UP: {
 			if (y > L) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, --y);
+				Control::gotoxy(x, --y);
 				std::cout << "▶";
 			}
 			break;
 		}
 		case DOWN: {
 			if (y < R) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, ++y);
+				Control::gotoxy(x, ++y);
 				std::cout << "▶";
 			}
 			break;
@@ -1876,25 +1876,25 @@ int Room::g_room3_2() {
 		}
 		if (y == L)
 		{
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "                                                                                 ";
-			control.gotoxy(x + 15, L);
+			Control::gotoxy(x + 15, L);
 			std::cout << "고인물 안을 뒤지면 무언가 나올 것 같습니다.";
 		}
 		else if (y == M)
 		{
-			control.gotoxy(x + 15, R);
+			Control::gotoxy(x + 15, R);
 			std::cout << "                                                                                 ";
-			control.gotoxy(x + 15, L);
+			Control::gotoxy(x + 15, L);
 			std::cout << "                                                                                 ";
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "치즈가 보입니다.";
 		}
 		else if (y == R)
 		{
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "                                                                              ";
-			control.gotoxy(x + 15, R);
+			Control::gotoxy(x + 15, R);
 			std::cout << "상자에서는 껌, 솜뭉치, 인싸토끼, 인피니티 건틀릿, 꽝을 얻을 수 있습니다.";
 		}
 	}
@@ -1903,33 +1903,33 @@ int Room::g_room3_2() {
 int Room::g_room3_3() {
 	x = 0, y = 50;
 
-	control.gotoxy(0, L);
+	Control::gotoxy(0, L);
 	std::cout << "▶ 종이조각";
-	control.gotoxy(0, M);
+	Control::gotoxy(0, M);
 	std::cout << "   구덩이";
-	control.gotoxy(0, R);
+	Control::gotoxy(0, R);
 	std::cout << "   항아리";
-	control.gotoxy(x + 15, L);
+	Control::gotoxy(x + 15, L);
 	std::cout << "종이조각에서는 F맞은 성적표,청구서를 얻을 수 있습니다.";
 
 	while (1) {
-		int n = control.key_control();
+		int n = Control::key_control();
 
 		switch (n) {
 		case UP: {
 			if (y > L) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, --y);
+				Control::gotoxy(x, --y);
 				std::cout << "▶";
 			}
 			break;
 		}
 		case DOWN: {
 			if (y < R) {
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, ++y);
+				Control::gotoxy(x, ++y);
 				std::cout << "▶";
 			}
 			break;
@@ -1948,25 +1948,25 @@ int Room::g_room3_3() {
 		}
 		if (y == L)
 		{
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "                                                                                 ";
-			control.gotoxy(x + 15, L);
+			Control::gotoxy(x + 15, L);
 			std::cout << "종이조각에서는 F맞은 성적표,청구서를 얻을 수 있습니다.";
 		}
 		else if (y == M)
 		{
-			control.gotoxy(x + 15, R);
+			Control::gotoxy(x + 15, R);
 			std::cout << "                                                                                 ";
-			control.gotoxy(x + 15, L);
+			Control::gotoxy(x + 15, L);
 			std::cout << "                                                                                 ";
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "구덩이는 무엇일까요?";
 		}
 		else if (y == R)
 		{
-			control.gotoxy(x + 15, M);
+			Control::gotoxy(x + 15, M);
 			std::cout << "                                                                              ";
-			control.gotoxy(x + 15, R);
+			Control::gotoxy(x + 15, R);
 			std::cout << "항아리에서는 껌, 솜뭉치, 꽝을 얻을 수 있습니다.";
 		}
 	}

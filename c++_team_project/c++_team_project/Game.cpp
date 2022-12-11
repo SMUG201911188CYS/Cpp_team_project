@@ -38,7 +38,6 @@ bool Game::game() {
 		else if (what_Event == hole) get_1 = event.hole();
 		else get_1 = NONE;
 
-
 		scene.show_crossroads();
 		room.crossroad();
 
@@ -798,7 +797,7 @@ void Game::test_setting() {
 			cout << "다시 입력" << endl;
 		}
 		else {
-			this->player_bag.input_item(item_temp);
+			this->player_bag.input_item(item_temp - 1);
 			i++;
 		}
 

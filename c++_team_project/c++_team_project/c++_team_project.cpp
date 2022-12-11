@@ -15,12 +15,14 @@ int main()
 	bool game1_end = true;
 	bool game2_end = true;
 
-	while (1) {
-		std::cout << "어떤 모드로 할건지 입력" << std::endl;
-		std::cout << "1. 스토리 모드 // 2. 보스전만" << std::endl;
-		std::cout << ">>";
-		std::cin >> mode_choose;
-		system("cls");
+	while (1) { // 만약 디버깅 모드로 사용하고 싶다면 주석을 지우면 됨.
+		//std::cout << "어떤 모드로 할건지 입력" << std::endl;
+		//std::cout << "1. 스토리 모드 // 2. 보스전만" << std::endl;
+		//std::cout << ">>";
+		//std::cin >> mode_choose;
+		//system("cls");
+		mode_choose = 1; // 만약 디버깅 모드로 사용하고 싶다면 해당 변수를 주석처리 하면 됨.
+
 		if (mode_choose == 1) {
 			game1_end = true;
 			while (game1_end) {

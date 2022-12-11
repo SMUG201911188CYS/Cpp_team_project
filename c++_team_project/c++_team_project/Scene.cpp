@@ -381,11 +381,11 @@ void Scene::show_Sewer() {
 	printf("                                                                       i:            ;.                                                              \n");
 	printf("                                                                       r             ;,                                                              \n");
 	printf(":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::\n");
-	control.gotoxy(0, 50);
+	Control::gotoxy(0, 50);
 	printf("▶ 왼쪽 하수구");
-	control.gotoxy(0, 51);
+	Control::gotoxy(0, 51);
 	printf("   가운데 하수구");
-	control.gotoxy(0, 52);
+	Control::gotoxy(0, 52);
 	printf("   오른쪽 하수구");
 }
 
@@ -440,11 +440,11 @@ void Scene::show_crossroads() {
 	printf("   :2u:                                                                 M2         rB                                                           sS: |\n");
 	printf(" :U7                                                                    Bi          B                                                             YL|\n");
 	printf("----------------------------------------------------------------------------------------------------------------------------------------------------|\n");
-	control.gotoxy(0, 50);
+	Control::gotoxy(0, 50);
 	printf("▶ 왼쪽 길");
-	control.gotoxy(0, 51);
+	Control::gotoxy(0, 51);
 	printf("   가운데 길");
-	control.gotoxy(0, 52);
+	Control::gotoxy(0, 52);
 	printf("   오른쪽 길");
 }
 void Scene::show_room() {

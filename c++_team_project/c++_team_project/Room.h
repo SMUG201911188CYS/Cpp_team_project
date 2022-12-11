@@ -4,11 +4,10 @@
 
 #include "enum.h"
 
-class Room {
+class Room : public Control {
 private:
 	int x;
 	int y;
-	Control control;
 	int sewer_in; // 처음 하수구 선택 1 -> C 2 -> G417, 3 -> NORMAL
 	int cross_in[3];
 

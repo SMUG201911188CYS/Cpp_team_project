@@ -4,9 +4,8 @@
 
 #include "enum.h"
 
-class Bag {
+class Bag : public Control{
 private:
-	Control control;
 	Item bag_item[4];
 	int bag_size;
 public:

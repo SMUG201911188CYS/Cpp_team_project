@@ -44,6 +44,7 @@ public :
 	int Skill_Attack(Character& Hit_Object, bool temp);
 };
 
+
 class Boss : public Character {
 private:
 	std::string boss_skill_list[4];

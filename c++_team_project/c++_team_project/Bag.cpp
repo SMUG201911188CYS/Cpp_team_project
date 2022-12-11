@@ -8,75 +8,75 @@ Bag::Bag() {
 	bag_size = 0;
 }
 
-bool Bag::input_item(int item) {
+bool Bag::input_item(int item) { // 가방에 아이템 삽입
 	return this->bag_item[bag_size++].init_item(item);
 }
 
-void Bag::bag_list_print() {
-	control.gotoxy(65, 50);
+void Bag::bag_list_print() { // 보스전때 가방 약식으로 보여주는 함수
+	Control::gotoxy(65, 50);
 	std::cout << "                                     ";
-	control.gotoxy(65, 51);
+	Control::gotoxy(65, 51);
 	std::cout << "                                     ";
-	control.gotoxy(65, 52);
+	Control::gotoxy(65, 52);
 	std::cout << "                                     ";
-	control.gotoxy(65, 48);
+	Control::gotoxy(65, 48);
 	std::cout << "가방을 열어 아이템을 사용한다!";
-	control.gotoxy(65, 50);
+	Control::gotoxy(65, 50);
 	std::cout << "                                     ";
-	control.gotoxy(65, 51);
+	Control::gotoxy(65, 51);
 	std::cout << "                                     ";
-	control.gotoxy(65, 52);
+	Control::gotoxy(65, 52);
 	std::cout << "                                     ";
-	control.gotoxy(65, 49);
+	Control::gotoxy(65, 49);
 	std::cout << "보유 아이템";
-	control.gotoxy(65, 50);
+	Control::gotoxy(65, 50);
 	std::cout.width(10);
 	std::cout << std::left << bag_item[0].get_item_name();
-	control.gotoxy(75, 50);
+	Control::gotoxy(75, 50);
 	std::cout.width(10);
 	std::cout << std::left << bag_item[1].get_item_name();
-	control.gotoxy(85, 50);
+	Control::gotoxy(85, 50);
 	std::cout.width(10);
 	std::cout << std::left << bag_item[2].get_item_name();
 }
 
-int Bag::bag_open(Character & player, Character & boss) {
-	control.gotoxy(65, 47);
+int Bag::bag_open(Character & player, Character & boss) { // 보스전때 가방 열기를 누르면 가방 안 내용물을 보여주는 함수
+	Control::gotoxy(65, 47);
 	std::cout << "                               ";
-	control.gotoxy(65, 48);
+	Control::gotoxy(65, 48);
 	std::cout << "                               ";
-	control.gotoxy(65, 49);
+	Control::gotoxy(65, 49);
 	std::cout << "                               ";
-	control.gotoxy(65, 50);
+	Control::gotoxy(65, 50);
 	std::cout << "                               ";
-	control.gotoxy(115, 47);
+	Control::gotoxy(115, 47);
 	std::cout << "                               ";
-	control.gotoxy(115, 50);
+	Control::gotoxy(115, 50);
 	std::cout << "                               ";
 	int x = 115;
 	int y = 47;
-	control.gotoxy(115, 47);
+	Control::gotoxy(115, 47);
 	std::cout << "▶ " << bag_item[0].get_item_name();
-	control.gotoxy(65, 47);
+	Control::gotoxy(65, 47);
 	std::cout << bag_item[0].get_item_effect();
-	control.gotoxy(115, 48);
+	Control::gotoxy(115, 48);
 	std::cout << "   " << bag_item[1].get_item_name();
-	control.gotoxy(115, 49);
+	Control::gotoxy(115, 49);
 	std::cout << "   " << bag_item[2].get_item_name();
-	control.gotoxy(115, 50);
+	Control::gotoxy(115, 50);
 	std::cout << "   " << bag_item[3].get_item_name();
 
 	while (1)
 	{
-		int n = control.key_control();
+		int n = Control::key_control();
 		switch (n) {
 		case UP:
 		{
 			if (y > 47)
 			{
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, y - 1);
+				Control::gotoxy(x, y - 1);
 				std::cout << "▶";
 				y = y - 1;
 			}
@@ -86,9 +86,9 @@ int Bag::bag_open(Character & player, Character & boss) {
 		{
 			if (y < 50)
 			{
-				control.gotoxy(x, y);
+				Control::gotoxy(x, y);
 				std::cout << "   ";
-				control.gotoxy(x, y + 1);
+				Control::gotoxy(x, y + 1);
 				std::cout << "▶";
 				y = y + 1;
 			}
@@ -117,47 +117,48 @@ int Bag::bag_open(Character & player, Character & boss) {
 		if (y == 47)
 		{
 
-			control.gotoxy(x - 50, 48);
+			Control::gotoxy(x - 50, 48);
 			std::cout << "                                           ";
-			control.gotoxy(x - 50, 49);
+			Control::gotoxy(x - 50, 49);
 			std::cout << "                                           ";
-			control.gotoxy(x - 50, 47);
+			Control::gotoxy(x - 50, 47);
 			std::cout << bag_item[0].get_item_effect();
 		}
 		else if (y == 48)
 		{
-			control.gotoxy(x - 50, 47);
+			Control::gotoxy(x - 50, 47);
 			std::cout << "                                           ";
-			control.gotoxy(x - 50, 49);
+			Control::gotoxy(x - 50, 49);
 			std::cout << "                                           ";
-			control.gotoxy(x - 50, 48);
+			Control::gotoxy(x - 50, 48);
 			std::cout << bag_item[1].get_item_effect();
 		}
 		else if (y == 49)
 		{
-			control.gotoxy(x - 50, 47);
+			Control::gotoxy(x - 50, 47);
 			std::cout << "                                           ";
-			control.gotoxy(x - 50, 48);
+			Control::gotoxy(x - 50, 48);
 			std::cout << "                                           ";
-			control.gotoxy(x - 50, 49);
+			Control::gotoxy(x - 50, 49);
 			std::cout << bag_item[2].get_item_effect();
 		}
 		else if (y == 50)
 		{
-			control.gotoxy(x - 50, 47);
+			Control::gotoxy(x - 50, 47);
 			std::cout << "                                           ";
-			control.gotoxy(x - 50, 48);
+			Control::gotoxy(x - 50, 48);
 			std::cout << "                                           ";
-			control.gotoxy(x - 50, 49);
+			Control::gotoxy(x - 50, 49);
+			std::cout << "                           ";
 			std::cout << bag_item[3].get_item_effect();
 		}
 	}
-	control.gotoxy(x - 50, 47);
+	Control::gotoxy(x - 50, 47);
 	std::cout << "                                           ";
-	control.gotoxy(x - 50, 48);
+	Control::gotoxy(x - 50, 48);
 	std::cout << "                                           ";
-	control.gotoxy(x - 50, 49);
+	Control::gotoxy(x - 50, 49);
 	std::cout << "                                           ";
-	control.gotoxy(x - 50, 50);
+	Control::gotoxy(x - 50, 50);
 	std::cout << "                                           ";
 }

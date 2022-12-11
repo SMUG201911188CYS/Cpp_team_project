@@ -2,9 +2,8 @@
 #define __SCENE_H__
 #include "enum.h"
 
-class Scene {
+class Scene : public Control {
 protected:
-	Control control;
 public:
 	void text_color_change (int color_number); // 텍스트 색 변경
 	void show_StartIntro(); // 시작 화면
