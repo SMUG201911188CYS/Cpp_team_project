@@ -1,3 +1,14 @@
-﻿  Game.cpp
-Game.obj : error LNK2019: __imp_BlockInput"public: bool __cdecl Game::game(void)" (?game@Game@@QEAA_NXZ) 함수에서 참조되는 확인할 수 없는 외부 기호
-C:\Users\money\Documents\GitHub\Cpp_team_project\c++_team_project\x64\Debug\c++_team_project.exe : fatal error LNK1120: 1개의 확인할 수 없는 외부 참조입니다.
+﻿  Bag.cpp
+  Character.cpp
+  Control.cpp
+  Ending.cpp
+  Event.cpp
+  Game.cpp
+  Item.cpp
+C:\Users\money\Documents\GitHub\Cpp_team_project\c++_team_project\c++_team_project\Item.cpp(204,13): warning C4244: '초기화 중': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Room.cpp
+  Scene.cpp
+  c++_team_project.cpp
+  코드를 생성하고 있습니다...
+C:\Users\money\Documents\GitHub\Cpp_team_project\c++_team_project\c++_team_project\Control.cpp(35): warning C4715: 'Control::key_control': 모든 제어 경로에서 값을 반환하지는 않습니다.
+  c++_team_project.vcxproj -> C:\Users\money\Documents\GitHub\Cpp_team_project\c++_team_project\x64\Debug\c++_team_project.exe
